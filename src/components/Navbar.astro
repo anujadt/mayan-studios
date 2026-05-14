@@ -14,8 +14,9 @@ const path = Astro.url.pathname;
     <nav class="nav-menu" aria-label="Primary">
       <a href="/" class={path === '/' ? 'active' : ''}>Home</a>
       <a href="/studio-corner-2f" class={path.startsWith('/studio-corner-2f') ? 'active' : ''}>The Studio</a>
-      <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">Booking.com ★ 8.5</a>
-      <a href="#contact" class="nav-cta">Inquire</a>
+      <a href="/studio-corner-2f#revenue">Revenue</a>
+      <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">★ 8.5</a>
+      <a href="#contact" class="nav-cta">Schedule Viewing</a>
     </nav>
 
     <button class="nav-burger" aria-label="Menu" aria-expanded="false">

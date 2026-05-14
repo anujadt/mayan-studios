@@ -32,13 +32,22 @@ const year = new Date().getFullYear();
     <div class="footer-col">
       <h5>Location</h5>
       <p class="addr">Mayan 2, Yas Island<br/>Abu Dhabi, United Arab Emirates</p>
+      <a href="/mayan-2f-brief.html" class="footer-pdf" target="_blank" rel="noopener">Download Property Brief →</a>
+    </div>
+  </div>
+
+  <div class="footer-disclaimer">
+    <div class="container">
+      <p>
+        This is a private listing. For official property transactions, please work with a RERA/ADREC licensed broker. Information shown — including revenue figures, occupancy and guest ratings — is provided in good faith and available for verification during due diligence. Not affiliated with Aldar Properties or Booking.com.
+      </p>
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="container">
       <span>© {year} Luxury Studios on Yas Island. All rights reserved.</span>
-      <span class="muted">Private listing · Independently offered, not affiliated with Aldar Properties or Booking.com</span>
+      <span class="muted">Private listing · Independently offered</span>
     </div>
   </div>
 </footer>
@@ -122,6 +131,29 @@ const year = new Date().getFullYear();
     font-size: 0.92rem;
     line-height: 1.7;
     color: rgba(255,255,255,0.7);
+  }
+  .footer-pdf {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 3px;
+  }
+  .footer-pdf:hover { color: var(--gold-light); }
+  .footer-disclaimer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+    background: rgba(0,0,0,0.18);
+  }
+  .footer-disclaimer p {
+    font-size: 0.76rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.55);
+    max-width: 920px;
   }
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.08);

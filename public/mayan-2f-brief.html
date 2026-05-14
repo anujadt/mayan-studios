@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Furnished Corner Studio · Mayan 2 · Property Brief</title>
+<meta name="description" content="Property brief: Furnished corner studio at Mayan 2, Yas Island. 8.5★ on Booking.com, AED 148K annual revenue. For sale, privately offered." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #11193B;
+    --gold: #C69B3C;
+    --gold-light: #D8B864;
+    --ivory: #F8F5F0;
+    --ivory-warm: #F1ECE2;
+    --gray-warm: #E8E4DE;
+    --text: #0D0D0D;
+    --text-muted: #4A4A4A;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text);
+    background: var(--ivory);
+    line-height: 1.55;
+    font-size: 14px;
+    padding: 2rem 1rem;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 12px 40px rgba(11,17,36,0.08);
+    overflow: hidden;
+  }
+  .hero {
+    position: relative;
+    aspect-ratio: 16/8;
+    background-image: url('/images/studio-2f/01-bedroom-living.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(17,25,59,0.15) 0%, rgba(17,25,59,0.55) 100%);
+  }
+  .hero-content {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 2rem;
+    color: var(--white);
+    z-index: 1;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.65rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.9);
+  }
+  .badges {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.4rem 0.85rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .badge.rev { background: rgba(11,17,36,0.92); color: var(--gold-light); }
+
+  .body { padding: 2rem; }
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray-warm);
+  }
+  @media (max-width: 600px) { .specs { grid-template-columns: repeat(2, 1fr); } }
+  .spec {
+    padding: 0.75rem 0;
+  }
+  .spec-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: block;
+  }
+  .spec-lbl {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+  }
+  @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .gold-divider { width: 36px; height: 1px; background: var(--gold); margin-bottom: 0.75rem; }
+  p { color: var(--text-muted); margin-bottom: 0.75rem; font-size: 0.92rem; line-height: 1.65; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--ivory);
+    border: 1px solid var(--gray-warm);
+  }
+  .stat-cell {
+    padding: 1rem;
+    text-align: center;
+    border-right: 1px solid var(--gray-warm);
+    border-bottom: 1px solid var(--gray-warm);
+  }
+  .stat-cell:nth-child(2n) { border-right: none; }
+  .stat-cell:nth-last-child(-n+2) { border-bottom: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+  .stat-lbl {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .features {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+  .features li {
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    position: relative;
+    color: var(--navy);
+  }
+  .features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+  }
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+    margin: 1.5rem 0;
+  }
+  .photo-strip img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+  }
+  @media (max-width: 600px) { .photo-strip { grid-template-columns: repeat(2, 1fr); } }
+
+  .footer {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-warm);
+    align-items: start;
+  }
+  @media (max-width: 600px) { .footer { grid-template-columns: 1fr; } }
+  .contact-block h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .contact-block a, .contact-block span {
+    color: var(--navy);
+    font-size: 0.92rem;
+    display: block;
+    margin-bottom: 0.2rem;
+    text-decoration: none;
+  }
+  .qr-block {
+    text-align: center;
+  }
+  .qr-block img {
+    width: 110px;
+    height: 110px;
+    border: 1px solid var(--gray-warm);
+    display: inline-block;
+    background: var(--white);
+  }
+  .qr-block div {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+    font-weight: 600;
+  }
+  .disclaimer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-warm);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .controls {
+    max-width: 880px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+  .controls button {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .controls button:hover { background: var(--gold); }
+
+  @media print {
+    body { background: var(--white); padding: 0; font-size: 11pt; }
+    .controls { display: none; }
+    .page { box-shadow: none; max-width: 100%; }
+    .hero { aspect-ratio: 16/7; }
+    .body { padding: 1.25rem 1.5rem; }
+    .photo-strip { margin: 0.75rem 0; }
+    @page { size: A4; margin: 0.5cm; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <header class="hero">
+    <div class="badges">
+      <span class="badge">For Sale</span>
+      <span class="badge rev">★ 8.5 · AED 148K Rev</span>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">Property Brief · Mayan 2 · Yas Island</span>
+      <h1>Furnished Corner Studio</h1>
+      <div class="hero-sub">2nd Floor · Corner Unit · Privately Offered</div>
+    </div>
+  </header>
+
+  <div class="body">
+    <div class="specs">
+      <div class="spec"><span class="spec-num">Studio</span><span class="spec-lbl">Layout</span></div>
+      <div class="spec"><span class="spec-num">1 Bath</span><span class="spec-lbl">Designer</span></div>
+      <div class="spec"><span class="spec-num">~550 sqft</span><span class="spec-lbl">Floor area</span></div>
+      <div class="spec"><span class="spec-num">2nd Floor</span><span class="spec-lbl">Corner unit</span></div>
+      <div class="spec"><span class="spec-num">Furnished</span><span class="spec-lbl">Move-in ready</span></div>
+    </div>
+
+    <div class="grid-2">
+      <section>
+        <h2>The Residence</h2>
+        <div class="gold-divider"></div>
+        <p>A fully furnished corner studio at Mayan 2 — Aldar's waterfront community on Yas Island. Twin-balcony exposures with sea and community views, designer interiors, and access to the full Mayan amenity collection: private beach, infinity pool, gym, sauna.</p>
+        <p>Rated <strong>8.5 on Booking.com</strong> across 167 guest stays. Move-in ready as a home, or guest-ready from day one as a short-stay investment.</p>
+
+        <h3 style="margin-top: 1rem;">Highlights</h3>
+        <ul class="features">
+          <li>Fully furnished &amp; move-in ready</li>
+          <li>Corner unit, enhanced natural light</li>
+          <li>Smart TV, sofa, dining</li>
+          <li>Fully-equipped kitchen</li>
+          <li>Rain shower, designer fixtures</li>
+          <li>Private balcony · sea view</li>
+          <li>Central AC, built-in wardrobe</li>
+          <li>Underground parking</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Investment Performance</h2>
+        <div class="gold-divider"></div>
+        <div class="stats">
+          <div class="stat-cell"><div class="stat-num">AED 148K</div><div class="stat-lbl">Annual revenue</div></div>
+          <div class="stat-cell"><div class="stat-num">167</div><div class="stat-lbl">Reservations</div></div>
+          <div class="stat-cell"><div class="stat-num">69%</div><div class="stat-lbl">Occupancy</div></div>
+          <div class="stat-cell"><div class="stat-num">4.51/5</div><div class="stat-lbl">Guest rating</div></div>
+        </div>
+        <p style="margin-top: 0.85rem; font-size: 0.8rem; font-style: italic;">
+          Gross revenue, Apr 2025 – Mar 2026. Before platform commissions and operating costs. Booking.com extranet data — available for verification.
+        </p>
+      </section>
+    </div>
+
+    <div class="photo-strip">
+      <img src="/images/amenities/infinity-pool.jpg" alt="Infinity pool" />
+      <img src="/images/amenities/beach.jpg" alt="Private beach" />
+      <img src="/images/studio-2f/02-living-room.jpg" alt="Living room" />
+      <img src="/images/studio-2f/05-balcony-chairs.jpg" alt="Balcony" />
+    </div>
+
+    <h2>Building &amp; Location</h2>
+    <div class="gold-divider"></div>
+    <ul class="features">
+      <li>24/7 concierge &amp; security</li>
+      <li>Private beach · 1 min</li>
+      <li>Yas Bay restaurants · 3 min</li>
+      <li>Yas Marina Circuit · 7 min</li>
+      <li>Ferrari World &amp; Waterworld · 7 min</li>
+      <li>Yas Mall · 9 min</li>
+      <li>Zayed Airport · 10 min</li>
+      <li>Dubai · 50 min</li>
+    </ul>
+
+    <div class="footer">
+      <div class="contact-block">
+        <h4>Owner Direct</h4>
+        <a href="https://wa.me/971547026170">WhatsApp +971 54 702 6170</a>
+        <a href="https://www.booking.com/Share-RgsjJ6">Booking.com ★ 8.5 listing</a>
+        <span>Mayan 2 · Yas Island · Abu Dhabi</span>
+      </div>
+      <div class="contact-block">
+        <h4>Online</h4>
+        <a href="https://mayan-studios.vercel.app/studio-corner-2f">mayan-studios.vercel.app</a>
+        <span style="font-size: 0.78rem; color: var(--text-muted);">Full gallery, monthly revenue chart, and floor comparison available online.</span>
+      </div>
+      <div class="qr-block">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fmayan-studios.vercel.app%2Fstudio-corner-2f&color=1B2A4A&bgcolor=FFFFFF&margin=2" alt="QR code linking to the studio detail page" />
+        <div>Scan for full listing</div>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      This is a private listing. For official property transactions, please work with a RERA/ADREC licensed broker. Revenue figures, occupancy and guest ratings are provided in good faith and available for verification during due diligence. Not affiliated with Aldar Properties or Booking.com.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

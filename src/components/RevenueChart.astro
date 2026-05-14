@@ -1,0 +1,106 @@
+---
+import { monthlyRevenue } from '../data/properties';
+
+const W = 760;
+const H = 280;
+const padL = 48;
+const padR = 16;
+const padT = 24;
+const padB = 44;
+const innerW = W - padL - padR;
+const innerH = H - padT - padB;
+const max = 25000;
+const ticks = [0, 5000, 10000, 15000, 20000, 25000];
+const n = monthlyRevenue.length;
+const bandW = innerW / n;
+const barW = bandW * 0.6;
+
+function fmt(v: number) {
+  if (v >= 1000) return `${(v / 1000).toFixed(0)}K`;
+  return String(v);
+}
+---
+<figure class="rev-chart" aria-label="Monthly revenue chart">
+  <svg viewBox={`0 0 ${W} ${H}`} role="img" preserveAspectRatio="xMidYMid meet">
+    <!-- gridlines -->
+    {ticks.map((t) => {
+      const y = padT + innerH - (t / max) * innerH;
+      return (
+        <g>
+          <line x1={padL} x2={W - padR} y1={y} y2={y} stroke="#E8E4DE" stroke-width="1" />
+          <text x={padL - 8} y={y + 4} text-anchor="end" font-size="10" fill="#7a7a7a" font-family="Inter, sans-serif">AED {fmt(t)}</text>
+        </g>
+      );
+    })}
+
+    <!-- bars -->
+    {monthlyRevenue.map((d, i) => {
+      const x = padL + i * bandW + (bandW - barW) / 2;
+      const h = (d.value / max) * innerH;
+      const y = padT + innerH - h;
+      const fill = d.peak ? '#C69B3C' : '#1B2A4A';
+      const opacity = d.partial ? 0.45 : 1;
+      return (
+        <g>
+          <rect x={x} y={y} width={barW} height={h} fill={fill} opacity={opacity}>
+            <title>{d.month}: AED {d.value.toLocaleString()}{d.partial ? ' (partial month)' : ''}</title>
+          </rect>
+          <text x={x + barW / 2} y={y - 6} text-anchor="middle" font-size="10" font-weight="600" fill={d.peak ? '#C69B3C' : '#1B2A4A'} font-family="Inter, sans-serif">
+            {fmt(d.value)}
+          </text>
+          <text x={padL + i * bandW + bandW / 2} y={H - padB + 18} text-anchor="middle" font-size="11" fill="#4a4a4a" font-family="Inter, sans-serif">
+            {d.month}
+          </text>
+          {d.partial && (
+            <text x={padL + i * bandW + bandW / 2} y={H - padB + 32} text-anchor="middle" font-size="8" fill="#a5a5a5" font-family="Inter, sans-serif">
+              partial
+            </text>
+          )}
+        </g>
+      );
+    })}
+
+    <!-- axes -->
+    <line x1={padL} x2={W - padR} y1={padT + innerH} y2={padT + innerH} stroke="#1B2A4A" stroke-width="1.5" />
+  </svg>
+
+  <figcaption class="legend">
+    <span class="key"><span class="sw peak"></span>Peak season (Oct–Feb)</span>
+    <span class="key"><span class="sw base"></span>Off-peak</span>
+    <span class="key muted">Source: Booking.com extranet · Apr 2025 – Mar 2026</span>
+  </figcaption>
+</figure>
+
+<style>
+  .rev-chart {
+    width: 100%;
+    margin: 0;
+  }
+  .rev-chart svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #ffffff;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .key {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .sw {
+    display: inline-block;
+    width: 14px;
+    height: 12px;
+  }
+  .sw.peak { background: #C69B3C; }
+  .sw.base { background: #1B2A4A; }
+  .muted { color: #909090; letter-spacing: 0.02em; }
+</style>

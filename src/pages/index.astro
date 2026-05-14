@@ -2,13 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import InquiryForm from '../components/InquiryForm.astro';
-import { properties } from '../data/properties';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import StickyCTA from '../components/StickyCTA.astro';
+import { revenueStats, whatsappURL } from '../data/properties';
 
 const highlights = [
-  { icon: 'beach', name: 'Private Beach', desc: 'White-sand beach with turquoise water, steps away' },
-  { icon: 'pool', name: 'Infinity Pool', desc: 'Resort-style pool overlooking the Arabian Gulf' },
-  { icon: 'star', name: '8.5★ on Booking.com', desc: 'Guest-rated by visitors who stayed at Mayan 2' },
-  { icon: 'view', name: 'Minutes from F1 Circuit', desc: 'Yas Marina Circuit, Ferrari World & Yas Waterworld' },
+  { icon: 'beach', label: 'Private Beach' },
+  { icon: 'pool', label: 'Infinity Pool' },
+  { icon: 'star', label: '8.5★ Booking.com' },
+  { icon: 'check', label: '69% Occupancy' },
+  { icon: 'view', label: 'AED 148K Revenue' },
 ];
 
 const distances = [
@@ -18,14 +21,13 @@ const distances = [
   { place: 'Ferrari World & Yas Waterworld', time: '7 min' },
   { place: 'Yas Mall', time: '9 min' },
   { place: 'Zayed International Airport', time: '10 min' },
-  { place: 'Saadiyat Island', time: '20 min' },
   { place: 'Downtown Abu Dhabi', time: '25 min' },
   { place: 'Dubai', time: '50 min' },
 ];
 ---
 <Layout
-  title="Luxury Studio Apartments on Yas Island · For Sale · 8.5★ on Booking.com"
-  description="A furnished corner studio for sale at Mayan 2, Yas Island, Abu Dhabi. 8.5★ rated on Booking.com — private beach, infinity pool, minutes from F1 Circuit."
+  title="Luxury Studio Apartments on Yas Island · Turnkey · 8.5★ Booking.com"
+  description="A turnkey investment on Yas Island — AED 148K annual revenue, fully furnished, ready for guests or owner. A privately offered corner studio at Mayan 2, Abu Dhabi."
   ogImage="/images/amenities/infinity-pool.jpg"
 >
   <!-- HERO -->
@@ -35,17 +37,16 @@ const distances = [
     <div class="hero-content container">
       <span class="hero-eyebrow">Mayan 2 · Yas Island · Abu Dhabi</span>
       <h1>Luxury Studio Apartments<br/>on Yas Island</h1>
-      <div class="hero-tag">Premium beachfront living in the heart of Abu Dhabi's most iconic destination</div>
+      <div class="hero-tag">A turnkey investment on Yas Island — AED 148K annual revenue, fully furnished, ready for guests or owner.</div>
       <div class="hero-badge">
         <span class="badge-star"><Icon name="star" size={16} /></span>
-        <span><strong>8.5</strong> · Rated on Booking.com</span>
+        <span><strong>8.5</strong> · Rated on Booking.com · {revenueStats.reservations} reservations</span>
       </div>
-      <p class="hero-lead">
-        A privately offered, fully furnished corner studio at Mayan 2 — Aldar's waterfront community on Yas Island. Turnkey, beach-front, and now available for sale.
-      </p>
       <div class="hero-cta">
-        <a href="#portfolio" class="btn btn-gold">Explore the Listing</a>
-        <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." class="btn btn-outline-light" target="_blank" rel="noopener">WhatsApp the Owner</a>
+        <a href="/studio-corner-2f" class="btn btn-gold">View the Studio</a>
+        <a href={whatsappURL} class="btn btn-outline-light" target="_blank" rel="noopener">
+          <Icon name="whatsapp" size={18} /> WhatsApp the Owner
+        </a>
       </div>
     </div>
     <div class="hero-scroll" aria-hidden="true">
@@ -54,118 +55,78 @@ const distances = [
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="section intro fade-in">
-    <div class="container-narrow intro-inner">
-      <span class="eyebrow">A Private Listing</span>
-      <h2>An island address. A turnkey home.</h2>
-      <div class="gold-divider center"></div>
-      <p>
-        Set within Aldar's waterfront Mayan community, this furnished corner studio captures the quiet confidence of Yas Island — moments from the Arabian Gulf, Yas Links Golf Course, and the city's most defining cultural and lifestyle destinations.
-      </p>
-
-      <div class="intro-stats">
-        <div>
-          <div class="stat-num">8.5★</div>
-          <div class="stat-lbl">Booking.com</div>
+  <!-- HIGHLIGHTS STRIP -->
+  <section class="strip">
+    <div class="container strip-inner">
+      {highlights.map((h) => (
+        <div class="strip-item">
+          <span class="strip-icon"><Icon name={h.icon} size={20} /></span>
+          <span class="strip-label">{h.label}</span>
         </div>
-        <div>
-          <div class="stat-num">Furnished</div>
-          <div class="stat-lbl">Move-in Ready</div>
-        </div>
-        <div>
-          <div class="stat-num">For Sale</div>
-          <div class="stat-lbl">Privately Offered</div>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="section portfolio">
+  <!-- LEAD CARD -->
+  <section class="section lead-section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="eyebrow">The Listings</span>
-        <h2>One active studio. One on the way.</h2>
+        <span class="eyebrow">The Listing</span>
+        <h2>A turnkey corner studio at Mayan 2.</h2>
         <div class="gold-divider"></div>
+        <p class="lead-intro">Fully furnished. Corner unit. Sea-view balcony. 8.5★ on Booking.com with a documented two-year operating history. Available privately, directly from the owner.</p>
       </div>
 
-      <div class="property-grid">
-        {properties.map((p) => (
-          <article class={`property-card fade-in ${p.status}`}>
-            {p.status === 'active' ? (
-              <a href={`/${p.slug}`} class="card-link" aria-label={p.title}>
-                <div class="card-image" style={`background-image: url('${p.hero}')`}>
-                  <span class={`status-badge ${p.status}`}>{p.statusLabel}</span>
-                </div>
-                <div class="card-body">
-                  <h3>{p.shortTitle}</h3>
-                  <div class="card-meta">
-                    <span>{p.floor}</span>
-                    <span class="dot">·</span>
-                    <span>{p.size}</span>
-                    <span class="dot">·</span>
-                    <span>{p.beds}</span>
-                  </div>
-                  <p>{p.hook}</p>
-                  <div class="card-cta">
-                    View Details
-                    <Icon name="arrow" size={16} />
-                  </div>
-                </div>
-              </a>
-            ) : (
-              <div class="card-link" aria-label={p.title}>
-                <div class="card-image" style={`background-image: url('${p.hero}')`}>
-                  <span class={`status-badge ${p.status}`}>{p.statusLabel}</span>
-                </div>
-                <div class="card-body">
-                  <h3>{p.shortTitle}</h3>
-                  <div class="card-meta">
-                    <span>{p.floor}</span>
-                    <span class="dot">·</span>
-                    <span>{p.size}</span>
-                    <span class="dot">·</span>
-                    <span>{p.beds}</span>
-                  </div>
-                  <p>{p.hook}</p>
-                  <a href="#contact" class="card-cta">
-                    Register Interest
-                    <Icon name="arrow" size={16} />
-                  </a>
-                </div>
-              </div>
-            )}
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- HIGHLIGHTS -->
-  <section class="section highlights-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="eyebrow">What sets it apart</span>
-        <h2>Highlights of the address.</h2>
-        <div class="gold-divider"></div>
-      </div>
-
-      <div class="highlights-grid">
-        {highlights.map((h) => (
-          <div class="highlight fade-in">
-            <div class="highlight-icon"><Icon name={h.icon} size={28} /></div>
-            <h4>{h.name}</h4>
-            <p>{h.desc}</p>
+      <article class="lead-card fade-in">
+        <a href="/studio-corner-2f" class="lead-link">
+          <div class="lead-image">
+            <img src="/images/studio-2f/01-bedroom-living.jpg" alt="Furnished corner studio at Mayan 2, 2nd floor" loading="eager" />
+            <span class="lead-badge">Available · For Sale</span>
+            <span class="lead-revenue">AED 148K · Annual Revenue</span>
           </div>
-        ))}
-      </div>
+          <div class="lead-body">
+            <div class="lead-meta-top">
+              <span>2nd Floor</span><span class="dot">·</span>
+              <span>Corner Unit</span><span class="dot">·</span>
+              <span>Fully Furnished</span><span class="dot">·</span>
+              <span>~550 sqft</span>
+            </div>
+            <h3 class="lead-title">Furnished Corner Studio</h3>
+            <p class="lead-hook">
+              Move-in ready or guest-ready from day one. Twin-balcony exposures, designer interiors, and access to the full Mayan amenity collection — private beach, infinity pool, gym, sauna.
+            </p>
+            <div class="lead-cta">
+              <span>View Studio Details</span>
+              <Icon name="arrow" size={16} />
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
 
-      <div class="highlight-images fade-in">
-        <figure><img src="/images/amenities/beach.jpg" alt="Private beach with white sand and turquoise water" loading="lazy" /></figure>
-        <figure><img src="/images/amenities/infinity-pool.jpg" alt="Infinity pool with beach view" loading="lazy" /></figure>
-        <figure><img src="/images/amenities/gym-new.jpg" alt="Building gym" loading="lazy" /></figure>
-      </div>
+  <!-- COLLAPSED FOMO SECTION -->
+  <section class="section fomo-section">
+    <div class="container">
+      <details class="fomo-details fade-in">
+        <summary>
+          <div class="summary-text">
+            <span class="eyebrow">Building Context</span>
+            <h2>The Other Studio in This Building</h2>
+            <p class="summary-sub">Another unit in this building was recently taken off market. Here's how the two compare.</p>
+          </div>
+          <span class="summary-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </summary>
+
+        <div class="fomo-body">
+          <ComparisonTable />
+          <p class="fomo-note">
+            The 5th floor unit was an unfurnished standard layout. The available 2nd floor corner studio is a different proposition — corner exposure, fully furnished, and with a documented Booking.com revenue history.
+          </p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -204,7 +165,7 @@ const distances = [
       <div class="booking-text">
         <span class="booking-rating"><Icon name="star" size={20} /><strong>8.5</strong></span>
         <div>
-          <h3 class="white-h">Rated 8.5 on Booking.com</h3>
+          <h3 class="white-h">{revenueStats.reservations} reservations · 69% occupancy</h3>
           <p class="muted-on-dark">"Perfect luxury stay with excellent value for money. Spotlessly clean, well-equipped, exceptional facilities."</p>
         </div>
       </div>
@@ -221,16 +182,20 @@ const distances = [
           <h2 class="white-h">Schedule a private viewing.</h2>
           <div class="gold-divider"></div>
           <p class="muted-on-dark">
-            The studio is privately offered for sale. Share a few details below and the owner will respond personally — or reach out directly on WhatsApp for the fastest response.
+            The studio is privately offered for sale. Share a few details and the owner will respond personally — or reach out on WhatsApp for the fastest response.
           </p>
           <div class="contact-meta">
             <div>
               <h5>WhatsApp</h5>
-              <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." target="_blank" rel="noopener">+971 54 702 6170</a>
+              <a href={whatsappURL} target="_blank" rel="noopener">+971 54 702 6170</a>
             </div>
             <div>
               <h5>Booking.com</h5>
               <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">View the 8.5★ listing →</a>
+            </div>
+            <div>
+              <h5>Property Brief</h5>
+              <a href="/mayan-2f-brief.html" target="_blank" rel="noopener">Download one-pager →</a>
             </div>
             <div>
               <h5>Location</h5>
@@ -246,17 +211,14 @@ const distances = [
     </div>
   </section>
 
-  <!-- Floating WhatsApp button -->
-  <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp the owner">
-    <Icon name="whatsapp" size={26} />
-  </a>
+  <StickyCTA />
 </Layout>
 
 <style>
   /* HERO */
   .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
     color: var(--white);
@@ -277,7 +239,7 @@ const distances = [
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(17,25,59,0.55) 0%, rgba(17,25,59,0.30) 35%, rgba(17,25,59,0.80) 100%);
+    background: linear-gradient(180deg, rgba(17,25,59,0.5) 0%, rgba(17,25,59,0.25) 35%, rgba(17,25,59,0.85) 100%);
   }
   .hero-content {
     position: relative;
@@ -306,9 +268,10 @@ const distances = [
     font-family: var(--font-serif);
     font-style: italic;
     font-size: clamp(1.05rem, 2vw, 1.4rem);
-    color: rgba(255,255,255,0.88);
+    color: rgba(255,255,255,0.92);
     margin-bottom: 1.75rem;
-    max-width: 680px;
+    max-width: 720px;
+    line-height: 1.4;
   }
   .hero-badge {
     display: inline-flex;
@@ -320,22 +283,11 @@ const distances = [
     color: var(--white);
     font-size: 0.92rem;
     padding: 0.55rem 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
   .hero-badge strong { color: var(--gold-light); font-weight: 700; }
   .badge-star { color: var(--gold-light); display: inline-flex; }
-  .hero-lead {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.85);
-    max-width: 620px;
-    margin-bottom: 2.5rem;
-  }
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
   .hero-scroll {
     position: absolute;
     bottom: 2rem;
@@ -362,176 +314,189 @@ const distances = [
     50% { opacity: 1; transform: scaleY(1); }
   }
 
-  /* INTRO */
-  .intro { background: var(--ivory); text-align: center; }
-  .intro-inner { display: flex; flex-direction: column; align-items: center; }
-  .intro p { font-size: 1.15rem; line-height: 1.8; max-width: 640px; color: var(--text); }
-  .intro-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3.5rem;
-    width: 100%;
-    max-width: 720px;
-    padding-top: 2.5rem;
-    border-top: 1px solid var(--gray-warm);
+  /* STRIP */
+  .strip {
+    background: var(--navy);
+    color: var(--white);
+    border-top: 1px solid rgba(255,255,255,0.05);
   }
-  .stat-num {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: var(--navy);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+  .strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2.5rem;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.25rem 1.5rem;
   }
-  .stat-lbl {
-    font-size: 0.72rem;
+  .strip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--white);
   }
-  @media (max-width: 560px) {
-    .intro-stats { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
+  .strip-icon { color: var(--gold); display: inline-flex; }
 
-  /* PORTFOLIO */
-  .portfolio { background: var(--white); }
+  /* LEAD CARD */
+  .lead-section { background: var(--ivory); }
   .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
   }
   .section-header .gold-divider { margin-left: auto; margin-right: auto; }
-
-  .property-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+  .lead-intro {
+    max-width: 640px;
+    margin: 1.25rem auto 0;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--text-muted);
   }
-  @media (max-width: 900px) {
-    .property-grid { grid-template-columns: 1fr; }
-  }
-  .property-card {
-    background: var(--ivory);
+  .lead-card {
+    background: var(--white);
     overflow: hidden;
-    transition: transform 500ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 500ms ease;
+    box-shadow: var(--shadow-md);
+    max-width: 1080px;
+    margin: 0 auto;
+    transition: transform 500ms ease, box-shadow 500ms ease;
   }
-  .property-card:hover {
+  .lead-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
   }
-  .property-card.coming-soon .card-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(17,25,59,0.45);
+  .lead-link { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; }
+  @media (max-width: 768px) {
+    .lead-link { grid-template-columns: 1fr; }
   }
-  .card-link { display: block; }
-  .card-image {
-    aspect-ratio: 4 / 3;
-    background-size: cover;
-    background-position: center;
+  .lead-image {
     position: relative;
+    aspect-ratio: 4/3;
     overflow: hidden;
-    transition: transform 700ms ease;
   }
-  .property-card:hover .card-image {
-    transform: scale(1.04);
+  .lead-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 800ms ease;
   }
-  .status-badge {
+  .lead-card:hover .lead-image img { transform: scale(1.04); }
+  .lead-badge {
     position: absolute;
     top: 1.25rem;
     left: 1.25rem;
-    z-index: 2;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.55rem 1rem;
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    padding: 0.5rem 0.9rem;
-    background: var(--white);
-    color: var(--navy);
   }
-  .status-badge.coming-soon {
-    background: var(--gold);
+  .lead-revenue {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgba(11,17,36,0.85);
     color: var(--white);
+    padding: 0.55rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(8px);
   }
-  .card-body {
-    padding: 2rem;
+  .lead-body {
+    padding: 2.5rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
   }
-  .card-body h3 {
-    margin-bottom: 0.5rem;
-  }
-  .card-meta {
-    font-size: 0.85rem;
+  .lead-meta-top {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 1rem;
-    letter-spacing: 0.04em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
   }
-  .card-meta .dot { margin: 0 0.4rem; color: var(--gold); }
-  .card-body p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+  .lead-meta-top .dot { color: var(--gold); }
+  .lead-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--navy);
+    margin: 0;
   }
-  .card-cta {
+  .lead-hook { font-size: 0.98rem; line-height: 1.75; color: var(--text-muted); }
+  .lead-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--gray-warm);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--gold);
-    padding-top: 1rem;
-    border-top: 1px solid var(--gray-warm);
-    width: 100%;
-    justify-content: space-between;
   }
-  .card-cta :global(svg) {
+  .lead-cta :global(svg) { transition: transform 300ms ease; }
+  .lead-card:hover .lead-cta :global(svg) { transform: translateX(6px); }
+
+  /* FOMO collapsed */
+  .fomo-section { background: var(--ivory-warm); }
+  .fomo-details {
+    max-width: 1080px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--gray-warm);
+  }
+  .fomo-details > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.75rem 2rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .fomo-details > summary::-webkit-details-marker { display: none; }
+  .summary-text .eyebrow { margin-bottom: 0.5rem; }
+  .summary-text h2 {
+    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+    margin: 0.25rem 0 0.5rem;
+  }
+  .summary-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+  .summary-icon {
+    color: var(--gold);
+    flex-shrink: 0;
     transition: transform 300ms ease;
   }
-  .property-card:hover .card-cta :global(svg) {
-    transform: translateX(6px);
-  }
-
-  /* HIGHLIGHTS */
-  .highlights-section { background: var(--ivory); }
-  .highlights-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
-  }
-  @media (max-width: 900px) { .highlights-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .highlights-grid { grid-template-columns: 1fr; } }
-  .highlight {
-    padding: 1.5rem 0;
+  .fomo-details[open] .summary-icon { transform: rotate(180deg); }
+  .fomo-body {
+    padding: 0 2rem 2rem;
     border-top: 1px solid var(--gray-warm);
   }
-  .highlight-icon { color: var(--gold); margin-bottom: 1rem; }
-  .highlight h4 {
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--navy);
-    letter-spacing: 0.02em;
-    text-transform: none;
-    font-family: var(--font-serif);
-    font-weight: 600;
+  .fomo-body > * { margin-top: 2rem; }
+  .fomo-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-style: italic;
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
   }
-  .highlight p { font-size: 0.9rem; line-height: 1.6; }
-  .highlight-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  @media (max-width: 768px) { .highlight-images { grid-template-columns: 1fr; } }
-  .highlight-images img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
+  @media (max-width: 600px) {
+    .fomo-details > summary { padding: 1.25rem 1.25rem; }
+    .fomo-body { padding: 0 1.25rem 1.5rem; }
   }
 
   /* LOCATION */
-  .location-section { background: var(--ivory-warm); }
+  .location-section { background: var(--white); }
   .location-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -540,35 +505,13 @@ const distances = [
   }
   @media (max-width: 900px) { .location-grid { grid-template-columns: 1fr; gap: 3rem; } }
   .location-text p { font-size: 1.02rem; line-height: 1.8; margin-bottom: 2rem; }
-  .distance-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-  .distance-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-  }
+  .distance-list { display: flex; flex-direction: column; gap: 0.85rem; }
+  .distance-row { display: flex; align-items: baseline; gap: 0.75rem; font-size: 0.95rem; }
   .distance-place { color: var(--navy); font-weight: 500; }
-  .distance-dots {
-    flex: 1;
-    border-bottom: 1px dotted var(--gray-warm);
-    transform: translateY(-4px);
-  }
-  .distance-time {
-    color: var(--gold);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
-  }
+  .distance-dots { flex: 1; border-bottom: 1px dotted var(--gray-warm); transform: translateY(-4px); }
+  .distance-time { color: var(--gold); font-weight: 600; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
   .location-photo { position: relative; }
-  .location-photo img {
-    width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-  }
+  .location-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
   .location-photo-cap {
     position: absolute;
     bottom: 1rem;
@@ -583,11 +526,7 @@ const distances = [
   }
 
   /* Booking banner */
-  .booking-banner {
-    background: var(--navy);
-    color: var(--white);
-    padding: 3rem 0;
-  }
+  .booking-banner { background: var(--navy); color: var(--white); padding: 3rem 0; }
   .booking-inner {
     display: flex;
     align-items: center;
@@ -595,11 +534,7 @@ const distances = [
     gap: 2rem;
     flex-wrap: wrap;
   }
-  .booking-text {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
+  .booking-text { display: flex; align-items: center; gap: 1.5rem; }
   .booking-rating {
     display: inline-flex;
     align-items: center;
@@ -616,10 +551,7 @@ const distances = [
   .booking-text p { font-style: italic; max-width: 540px; }
 
   /* CONTACT */
-  .contact-section {
-    background: var(--navy);
-    color: var(--white);
-  }
+  .contact-section { background: var(--navy); color: var(--white); padding-bottom: 8rem; }
   .white-h { color: var(--white); }
   .muted-on-dark { color: rgba(255,255,255,0.7); }
   .gold-on-dark { color: var(--gold-light); }
@@ -632,42 +564,21 @@ const distances = [
   @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
   .contact-text p { font-size: 1.02rem; line-height: 1.8; margin-bottom: 2.5rem; }
   .contact-meta {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
+  @media (max-width: 560px) { .contact-meta { grid-template-columns: 1fr; } }
   .contact-meta h5 {
     font-family: var(--font-sans);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 0.35rem;
     font-weight: 600;
   }
-  .contact-meta a { color: var(--white); font-size: 1rem; }
+  .contact-meta a { color: var(--white); font-size: 0.98rem; }
   .contact-meta a:hover { color: var(--gold); }
   .contact-meta span { color: rgba(255,255,255,0.85); }
-
-  /* WhatsApp floating button */
-  .whatsapp-fab {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--green);
-    color: var(--white);
-    display: grid;
-    place-items: center;
-    z-index: 90;
-    box-shadow: 0 8px 24px rgba(37,211,102,0.45);
-    transition: transform 200ms ease, box-shadow 200ms ease;
-  }
-  .whatsapp-fab:hover {
-    transform: scale(1.08);
-    box-shadow: 0 12px 32px rgba(37,211,102,0.6);
-    color: var(--white);
-  }
 </style>
