@@ -1,0 +1,262 @@
+---
+export interface Props {
+  images: { src: string; alt: string; category?: string }[];
+}
+const { images } = Astro.props as Props;
+const heroImg = images[0];
+const sideImgs = images.slice(1, 5);
+---
+<section class="gallery-hero" data-gallery>
+  <div class="hero-grid">
+    <button class="g-main" data-index="0" aria-label="Open gallery">
+      <img src={heroImg.src} alt={heroImg.alt} loading="eager" fetchpriority="high" />
+    </button>
+    <div class="g-side">
+      {sideImgs.map((img, i) => (
+        <button class="g-thumb" data-index={i + 1} aria-label="Open gallery">
+          <img src={img.src} alt={img.alt} loading="lazy" />
+        </button>
+      ))}
+    </div>
+  </div>
+  <button class="view-all" data-index="0">
+    <span>View all {images.length} photos</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" stroke-linejoin="round"/></svg>
+  </button>
+</section>
+
+<!-- mobile swipe -->
+<section class="gallery-swipe" data-swipe>
+  <div class="swipe-track">
+    {images.slice(0, 8).map((img, i) => (
+      <button class="swipe-slide" data-index={i} aria-label="Open gallery">
+        <img src={img.src} alt={img.alt} loading={i < 2 ? 'eager' : 'lazy'} />
+      </button>
+    ))}
+  </div>
+  <button class="view-all view-all-mobile" data-index="0">View all {images.length} photos</button>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" data-lightbox aria-hidden="true">
+  <button class="lb-close" aria-label="Close gallery">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+  </button>
+  <button class="lb-prev" aria-label="Previous">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="lb-next" aria-label="Next">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="lb-stage" data-lb-stage></div>
+  <div class="lb-counter" data-lb-counter></div>
+  <div class="lb-caption" data-lb-caption></div>
+</div>
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+  const lightbox = document.querySelector('[data-lightbox]');
+  const stage = document.querySelector('[data-lb-stage]');
+  const counter = document.querySelector('[data-lb-counter]');
+  const caption = document.querySelector('[data-lb-caption]');
+
+  function open(index) {
+    currentIndex = index;
+    render();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function render() {
+    const img = images[currentIndex];
+    stage.innerHTML = `<img src="${img.src}" alt="${img.alt}" />`;
+    counter.textContent = `${currentIndex + 1} / ${images.length}`;
+    caption.textContent = img.alt;
+  }
+
+  function prev() { currentIndex = (currentIndex - 1 + images.length) % images.length; render(); }
+  function next() { currentIndex = (currentIndex + 1) % images.length; render(); }
+
+  document.querySelectorAll('[data-index]').forEach((btn) => {
+    btn.addEventListener('click', () => open(parseInt(btn.dataset.index, 10)));
+  });
+  document.querySelector('.lb-close').addEventListener('click', close);
+  document.querySelector('.lb-prev').addEventListener('click', prev);
+  document.querySelector('.lb-next').addEventListener('click', next);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  // Swipe gestures for mobile lightbox
+  let touchStartX = 0;
+  stage.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) (dx > 0 ? prev() : next());
+  });
+
+  // Mobile gallery horizontal scroll snap (no library needed)
+</script>
+
+<style>
+  .gallery-hero {
+    position: relative;
+    margin-top: 0;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 0.5rem;
+    height: 70vh;
+    min-height: 480px;
+  }
+  .g-main, .g-thumb, .swipe-slide {
+    overflow: hidden;
+    background: var(--ivory-warm);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+  }
+  .g-main img, .g-thumb img, .swipe-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms ease;
+  }
+  .g-main:hover img, .g-thumb:hover img {
+    transform: scale(1.04);
+  }
+  .g-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .view-all {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--white);
+    color: var(--navy);
+    border: none;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 200ms ease, color 200ms ease;
+    box-shadow: var(--shadow-md);
+  }
+  .view-all:hover { background: var(--navy); color: var(--white); }
+  .view-all-mobile {
+    position: static;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+    border: 1px solid var(--navy);
+  }
+  .gallery-swipe { display: none; }
+  .swipe-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    gap: 0.25rem;
+  }
+  .swipe-track::-webkit-scrollbar { display: none; }
+  .swipe-slide {
+    flex: 0 0 92%;
+    aspect-ratio: 4/3;
+    scroll-snap-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-hero .hero-grid, .gallery-hero .view-all { display: none; }
+    .gallery-swipe { display: block; }
+  }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 17, 36, 0.97);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+  }
+  .lightbox.open { display: flex; }
+  .lb-stage {
+    max-width: min(1400px, 100%);
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-stage :global(img) {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+  }
+  .lb-close, .lb-prev, .lb-next {
+    position: absolute;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 200ms ease;
+  }
+  .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: var(--gold); border-color: var(--gold); }
+  .lb-close { top: 1.5rem; right: 1.5rem; }
+  .lb-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+  .lb-counter {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    font-variant-numeric: tabular-nums;
+  }
+  .lb-caption {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    max-width: 80%;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .lb-prev, .lb-next { display: none; }
+    .lb-close { top: 1rem; right: 1rem; }
+  }
+</style>

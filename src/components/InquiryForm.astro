@@ -1,0 +1,91 @@
+---
+export interface Props {
+  property?: string;
+  variant?: 'light' | 'dark';
+  simple?: boolean;
+}
+const { property = 'Mayan Studios', variant = 'light', simple = false } = Astro.props as Props;
+---
+<form class={`inquiry-form ${variant}`} action="https://formspree.io/f/xpwzgvqr" method="POST">
+  <input type="hidden" name="_subject" value={`Inquiry · ${property}`} />
+  <input type="hidden" name="property" value={property} />
+
+  <div class="form-grid">
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required autocomplete="name" />
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" />
+    </div>
+    {!simple && (
+      <div class="field full">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+971 50 000 0000" />
+      </div>
+    )}
+    {!simple && (
+      <div class="field full">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="I'd like to schedule a private viewing..."></textarea>
+      </div>
+    )}
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-gold">
+      {simple ? 'Register Interest' : 'Send Inquiry'}
+    </button>
+    <a class="whatsapp-link" href={`https://wa.me/971500000000?text=Hi%2C%20I%27m%20interested%20in%20${encodeURIComponent(property)}.%20Please%20share%20details.`} target="_blank" rel="noopener">
+      Prefer WhatsApp →
+    </a>
+  </div>
+
+  <p class="form-note">Your inquiry is private and reaches the owner directly.</p>
+</form>
+
+<style>
+  .inquiry-form { width: 100%; }
+  .form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .whatsapp-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    transition: color 200ms ease;
+  }
+  .inquiry-form.dark .whatsapp-link { color: var(--gold-light); }
+  .whatsapp-link:hover { color: var(--navy); }
+  .inquiry-form.dark .whatsapp-link:hover { color: var(--white); }
+  .form-note {
+    font-size: 0.78rem;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .inquiry-form.dark .form-note { color: rgba(255,255,255,0.55); }
+  .inquiry-form.dark .field label { color: var(--gold-light); }
+  .inquiry-form.dark .field input,
+  .inquiry-form.dark .field textarea {
+    background: rgba(255,255,255,0.06);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .inquiry-form.dark .field input::placeholder,
+  .inquiry-form.dark .field textarea::placeholder {
+    color: rgba(255,255,255,0.4);
+  }
+  .inquiry-form.dark .field input:focus,
+  .inquiry-form.dark .field textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.1);
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description = 'Exclusive studio residences at Mayan 2, Yas Island — Abu Dhabi waterfront luxury living.',
+  ogImage = '/images/studio-a/01-balcony-sunset.webp',
+  canonical
+} = Astro.props as Props;
+
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:url" content={canonicalURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
+
+    <meta name="theme-color" content="#1B2A4A" />
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.fade-in').forEach((el) => io.observe(el));
+
+      // Navbar scroll state
+      const nav = document.querySelector('.nav');
+      if (nav) {
+        const onScroll = () => {
+          if (window.scrollY > 40) nav.classList.add('scrolled');
+          else nav.classList.remove('scrolled');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      // Mobile menu toggle
+      const burger = document.querySelector('.nav-burger');
+      const menu = document.querySelector('.nav-menu');
+      if (burger && menu) {
+        burger.addEventListener('click', () => {
+          burger.classList.toggle('open');
+          menu.classList.toggle('open');
+          document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+        });
+        menu.querySelectorAll('a').forEach((a) => {
+          a.addEventListener('click', () => {
+            burger.classList.remove('open');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

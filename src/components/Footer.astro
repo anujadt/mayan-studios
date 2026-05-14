@@ -1,0 +1,141 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="footer-mark">M</span>
+        <div>
+          <div class="footer-name">Mayan Studios</div>
+          <div class="footer-sub">A private property portfolio</div>
+        </div>
+      </div>
+      <p class="footer-tag">
+        Two exclusive studio residences at Mayan 2 — Aldar's waterfront community on Yas Island, Abu Dhabi.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Portfolio</h5>
+      <a href="/">Overview</a>
+      <a href="/mayan-studio-a">Skyline View Studio · 5F</a>
+      <a href="/mayan-studio-b">Corner Unit Studio · 2F</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Inquiries</h5>
+      <a href="mailto:hello@mayanstudios.example">hello@mayanstudios.example</a>
+      <a href="https://wa.me/971500000000?text=Hi%2C%20I%27m%20interested%20in%20a%20unit%20at%20Mayan%202%2C%20Yas%20Island." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#contact">Schedule a private viewing</a>
+    </div>
+
+    <div class="footer-col">
+      <h5>Location</h5>
+      <p class="addr">Mayan 2, Yas Island<br/>Abu Dhabi, United Arab Emirates</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© {year} Mayan Studios. All rights reserved.</span>
+      <span class="muted">Private portfolio · Not affiliated with Aldar Properties</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.78);
+    padding: 5rem 0 0;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 4rem;
+  }
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .footer-brand { padding-right: 1.5rem; }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+  .footer-mark {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .footer-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .footer-tag {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 360px;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .footer-col h5 {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .footer-col a {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.78);
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .addr {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+  .footer-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-bottom .muted { color: rgba(255,255,255,0.45); }
+</style>

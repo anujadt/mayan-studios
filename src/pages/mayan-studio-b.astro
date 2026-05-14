@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+---
+<Layout
+  title="Corner Unit Studio · Mayan 2 · Coming Soon"
+  description="A bright corner-unit studio at Mayan 2, Yas Island — joining the portfolio soon. Register for early access."
+  ogImage="/images/location/mayan-exterior.jpeg"
+>
+  <section class="coming-soon">
+    <div class="bg-image" style="background-image: url('/images/location/mayan-exterior.jpeg')"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="cs-content container">
+      <a href="/" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Back to Portfolio</span>
+      </a>
+
+      <div class="cs-card fade-in visible">
+        <span class="eyebrow gold-on-dark">A Second Residence at Mayan 2</span>
+        <h1>Corner Unit Studio</h1>
+        <div class="cs-sub">2nd Floor · Yas Island · Abu Dhabi</div>
+
+        <div class="cs-badge">
+          <span class="dot"></span>
+          <span>Coming Soon · Early 2027</span>
+        </div>
+
+        <p class="cs-lead">
+          A bright corner studio is joining the Mayan portfolio soon — same iconic address, with dual-aspect light and a quieter courtyard outlook. Photography, floor plan, and full details will be published when the residence becomes available.
+        </p>
+
+        <div class="cs-meta">
+          <div>
+            <div class="meta-label">Layout</div>
+            <div class="meta-value">Studio</div>
+          </div>
+          <div>
+            <div class="meta-label">Floor</div>
+            <div class="meta-value">2nd</div>
+          </div>
+          <div>
+            <div class="meta-label">Outlook</div>
+            <div class="meta-value">Courtyard · Dual-Aspect</div>
+          </div>
+          <div>
+            <div class="meta-label">Status</div>
+            <div class="meta-value">Pre-Release</div>
+          </div>
+        </div>
+
+        <div class="cs-form-section">
+          <h3>Register for Early Access</h3>
+          <p class="form-intro">Be the first to receive details, photography, and a private viewing invitation when this residence is released.</p>
+          <InquiryForm property="Corner Unit Studio · Mayan 2 · 2nd Floor (Coming Soon)" variant="dark" simple={true} />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .coming-soon {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    color: var(--white);
+    overflow: hidden;
+  }
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    animation: kenburns 24s ease-out infinite alternate;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1.0); }
+    to { transform: scale(1.12); }
+  }
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(11,17,36,0.92) 0%, rgba(17,25,59,0.85) 100%);
+  }
+  .cs-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2rem;
+  }
+  .back-link:hover { color: var(--gold); }
+  .cs-card {
+    max-width: 760px;
+    background: rgba(11,17,36,0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 3.5rem;
+    box-shadow: var(--shadow-lg);
+  }
+  @media (max-width: 640px) {
+    .cs-card { padding: 2rem 1.5rem; }
+  }
+  .cs-card h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .cs-sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.5rem;
+  }
+  .cs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(198,155,60,0.12);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.55rem 1rem;
+    margin-bottom: 2rem;
+  }
+  .cs-badge .dot {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(198,155,60,0.25);
+  }
+  .cs-lead {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2.5rem;
+  }
+  .cs-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 640px) { .cs-meta { grid-template-columns: 1fr 1fr; } }
+  .meta-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .meta-value {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--white);
+  }
+  .cs-form-section h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .form-intro {
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+  }
+  .gold-on-dark { color: var(--gold-light); }
+</style>
