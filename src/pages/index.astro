@@ -4,46 +4,48 @@ import Icon from '../components/Icon.astro';
 import InquiryForm from '../components/InquiryForm.astro';
 import { properties } from '../data/properties';
 
-const amenities = [
-  { icon: 'pool', name: 'Rooftop Pool', desc: 'Resort-style infinity pool with skyline views' },
-  { icon: 'beach', name: 'Direct Beach Access', desc: 'Private beach a one-minute walk away' },
-  { icon: 'gym', name: 'Fully-Equipped Gym', desc: 'State-of-the-art fitness facilities' },
-  { icon: 'concierge', name: '24/7 Concierge', desc: 'Round-the-clock service and security' },
-  { icon: 'bbq', name: 'BBQ & Sun Decks', desc: 'Outdoor entertaining at every level' },
-  { icon: 'sauna', name: 'Sauna & Steam', desc: 'Spa-grade wellness amenities' },
-  { icon: 'garden', name: 'Landscaped Gardens', desc: 'Quiet courtyards and play areas' },
-  { icon: 'parking', name: 'Covered Parking', desc: 'Secure underground parking' },
+const highlights = [
+  { icon: 'beach', name: 'Private Beach', desc: 'White-sand beach with turquoise water, steps away' },
+  { icon: 'pool', name: 'Infinity Pool', desc: 'Resort-style pool overlooking the Arabian Gulf' },
+  { icon: 'star', name: '8.5★ on Booking.com', desc: 'Guest-rated by visitors who stayed at Mayan 2' },
+  { icon: 'view', name: 'Minutes from F1 Circuit', desc: 'Yas Marina Circuit, Ferrari World & Yas Waterworld' },
 ];
 
 const distances = [
-  { place: 'The beach & golf course', time: '1 min' },
+  { place: 'Private beach & golf course', time: '1 min' },
   { place: 'Yas Bay restaurants', time: '3 min' },
   { place: 'Yas Marina Circuit (F1)', time: '7 min' },
+  { place: 'Ferrari World & Yas Waterworld', time: '7 min' },
   { place: 'Yas Mall', time: '9 min' },
   { place: 'Zayed International Airport', time: '10 min' },
-  { place: 'Downtown Abu Dhabi', time: '25 min' },
   { place: 'Saadiyat Island', time: '20 min' },
+  { place: 'Downtown Abu Dhabi', time: '25 min' },
   { place: 'Dubai', time: '50 min' },
 ];
 ---
 <Layout
-  title="Mayan Studios · Luxury Living on Yas Island, Abu Dhabi"
-  description="A private portfolio of two studio residences at Mayan 2 — Aldar's waterfront community on Yas Island. Concierge, pools, private beach, Yas Links Golf Course adjacent."
+  title="Luxury Studio Apartments on Yas Island · For Sale · 8.5★ on Booking.com"
+  description="A furnished corner studio for sale at Mayan 2, Yas Island, Abu Dhabi. 8.5★ rated on Booking.com — private beach, infinity pool, minutes from F1 Circuit."
+  ogImage="/images/amenities/infinity-pool.jpg"
 >
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-image" style="background-image: url('/images/studio-a/01-balcony-sunset.webp')"></div>
+    <div class="hero-image" style="background-image: url('/images/amenities/infinity-pool.jpg')"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content container">
-      <span class="hero-eyebrow">Aldar · Mayan 2 · Yas Island</span>
-      <h1>Mayan Studios</h1>
-      <div class="hero-tag">Luxury Living on Yas Island, Abu Dhabi</div>
+      <span class="hero-eyebrow">Mayan 2 · Yas Island · Abu Dhabi</span>
+      <h1>Luxury Studio Apartments<br/>on Yas Island</h1>
+      <div class="hero-tag">Premium beachfront living in the heart of Abu Dhabi's most iconic destination</div>
+      <div class="hero-badge">
+        <span class="badge-star"><Icon name="star" size={16} /></span>
+        <span><strong>8.5</strong> · Rated on Booking.com</span>
+      </div>
       <p class="hero-lead">
-        Two exclusive studio residences in one of Abu Dhabi's most sought-after waterfront communities — presented privately to a select audience.
+        A privately offered, fully furnished corner studio at Mayan 2 — Aldar's waterfront community on Yas Island. Turnkey, beach-front, and now available for sale.
       </p>
       <div class="hero-cta">
-        <a href="#portfolio" class="btn btn-gold">Explore the Portfolio</a>
-        <a href="#contact" class="btn btn-outline-light">Schedule a Viewing</a>
+        <a href="#portfolio" class="btn btn-gold">Explore the Listing</a>
+        <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." class="btn btn-outline-light" target="_blank" rel="noopener">WhatsApp the Owner</a>
       </div>
     </div>
     <div class="hero-scroll" aria-hidden="true">
@@ -55,25 +57,25 @@ const distances = [
   <!-- INTRO -->
   <section class="section intro fade-in">
     <div class="container-narrow intro-inner">
-      <span class="eyebrow">A Private Property Portfolio</span>
-      <h2>An island address, two refined residences.</h2>
+      <span class="eyebrow">A Private Listing</span>
+      <h2>An island address. A turnkey home.</h2>
       <div class="gold-divider center"></div>
       <p>
-        Set within Aldar's waterfront Mayan community, these two studio apartments capture the quiet confidence of Yas Island — moments from the Arabian Gulf, Yas Links Golf Course, and the city's most defining cultural and lifestyle destinations.
+        Set within Aldar's waterfront Mayan community, this furnished corner studio captures the quiet confidence of Yas Island — moments from the Arabian Gulf, Yas Links Golf Course, and the city's most defining cultural and lifestyle destinations.
       </p>
 
       <div class="intro-stats">
         <div>
-          <div class="stat-num">2</div>
-          <div class="stat-lbl">Residences</div>
+          <div class="stat-num">8.5★</div>
+          <div class="stat-lbl">Booking.com</div>
         </div>
         <div>
-          <div class="stat-num">Mayan 2</div>
-          <div class="stat-lbl">Tower</div>
+          <div class="stat-num">Furnished</div>
+          <div class="stat-lbl">Move-in Ready</div>
         </div>
         <div>
-          <div class="stat-num">Yas Island</div>
-          <div class="stat-lbl">Abu Dhabi</div>
+          <div class="stat-num">For Sale</div>
+          <div class="stat-lbl">Privately Offered</div>
         </div>
       </div>
     </div>
@@ -83,36 +85,86 @@ const distances = [
   <section id="portfolio" class="section portfolio">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="eyebrow">The Portfolio</span>
-        <h2>Two studios. One iconic address.</h2>
+        <span class="eyebrow">The Listings</span>
+        <h2>One active studio. One on the way.</h2>
         <div class="gold-divider"></div>
       </div>
 
       <div class="property-grid">
         {properties.map((p) => (
           <article class={`property-card fade-in ${p.status}`}>
-            <a href={`/${p.slug}`} class="card-link" aria-label={p.title}>
-              <div class="card-image" style={`background-image: url('${p.hero}')`}>
-                <span class={`status-badge ${p.status}`}>{p.statusLabel}</span>
-              </div>
-              <div class="card-body">
-                <h3>{p.shortTitle}</h3>
-                <div class="card-meta">
-                  <span>{p.floor}</span>
-                  <span class="dot">·</span>
-                  <span>{p.size}</span>
-                  <span class="dot">·</span>
-                  <span>{p.beds}</span>
+            {p.status === 'active' ? (
+              <a href={`/${p.slug}`} class="card-link" aria-label={p.title}>
+                <div class="card-image" style={`background-image: url('${p.hero}')`}>
+                  <span class={`status-badge ${p.status}`}>{p.statusLabel}</span>
                 </div>
-                <p>{p.hook}</p>
-                <div class="card-cta">
-                  {p.status === 'active' ? 'View Details' : 'Register Interest'}
-                  <Icon name="arrow" size={16} />
+                <div class="card-body">
+                  <h3>{p.shortTitle}</h3>
+                  <div class="card-meta">
+                    <span>{p.floor}</span>
+                    <span class="dot">·</span>
+                    <span>{p.size}</span>
+                    <span class="dot">·</span>
+                    <span>{p.beds}</span>
+                  </div>
+                  <p>{p.hook}</p>
+                  <div class="card-cta">
+                    View Details
+                    <Icon name="arrow" size={16} />
+                  </div>
+                </div>
+              </a>
+            ) : (
+              <div class="card-link" aria-label={p.title}>
+                <div class="card-image" style={`background-image: url('${p.hero}')`}>
+                  <span class={`status-badge ${p.status}`}>{p.statusLabel}</span>
+                </div>
+                <div class="card-body">
+                  <h3>{p.shortTitle}</h3>
+                  <div class="card-meta">
+                    <span>{p.floor}</span>
+                    <span class="dot">·</span>
+                    <span>{p.size}</span>
+                    <span class="dot">·</span>
+                    <span>{p.beds}</span>
+                  </div>
+                  <p>{p.hook}</p>
+                  <a href="#contact" class="card-cta">
+                    Register Interest
+                    <Icon name="arrow" size={16} />
+                  </a>
                 </div>
               </div>
-            </a>
+            )}
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section highlights-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="eyebrow">What sets it apart</span>
+        <h2>Highlights of the address.</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="highlights-grid">
+        {highlights.map((h) => (
+          <div class="highlight fade-in">
+            <div class="highlight-icon"><Icon name={h.icon} size={28} /></div>
+            <h4>{h.name}</h4>
+            <p>{h.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="highlight-images fade-in">
+        <figure><img src="/images/amenities/beach.jpg" alt="Private beach with white sand and turquoise water" loading="lazy" /></figure>
+        <figure><img src="/images/amenities/infinity-pool.jpg" alt="Infinity pool with beach view" loading="lazy" /></figure>
+        <figure><img src="/images/amenities/gym-new.jpg" alt="Building gym" loading="lazy" /></figure>
       </div>
     </div>
   </section>
@@ -139,39 +191,24 @@ const distances = [
           </div>
         </div>
         <div class="location-photo fade-in">
-          <img src="/images/location/mayan-exterior.jpeg" alt="Mayan towers viewed from the sea" loading="lazy" />
-          <div class="location-photo-cap">Mayan 2 · Aldar Properties</div>
+          <img src="/images/amenities/beach-water.jpg" alt="Beach with Mayan building behind" loading="lazy" />
+          <div class="location-photo-cap">Mayan 2 · Beachfront</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- AMENITIES -->
-  <section class="section amenities-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="eyebrow">Building Amenities</span>
-        <h2>The Mayan way of life.</h2>
-        <div class="gold-divider"></div>
+  <!-- BOOKING BANNER -->
+  <section class="booking-banner fade-in">
+    <div class="container booking-inner">
+      <div class="booking-text">
+        <span class="booking-rating"><Icon name="star" size={20} /><strong>8.5</strong></span>
+        <div>
+          <h3 class="white-h">Rated 8.5 on Booking.com</h3>
+          <p class="muted-on-dark">"Perfect luxury stay with excellent value for money. Spotlessly clean, well-equipped, exceptional facilities."</p>
+        </div>
       </div>
-
-      <div class="amenities-grid">
-        {amenities.map((a) => (
-          <div class="amenity fade-in">
-            <div class="amenity-icon">
-              <Icon name={a.icon} size={28} />
-            </div>
-            <h4>{a.name}</h4>
-            <p>{a.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="amenity-images fade-in">
-        <figure><img src="/images/amenities/rooftop-pool.webp" alt="Rooftop pool" loading="lazy" /></figure>
-        <figure><img src="/images/amenities/gym.webp" alt="Building gym" loading="lazy" /></figure>
-        <figure><img src="/images/location/al-marasy-marina.jpeg" alt="Marina promenade" loading="lazy" /></figure>
-      </div>
+      <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener" class="btn btn-gold">View on Booking.com</a>
     </div>
   </section>
 
@@ -184,16 +221,16 @@ const distances = [
           <h2 class="white-h">Schedule a private viewing.</h2>
           <div class="gold-divider"></div>
           <p class="muted-on-dark">
-            Both residences are offered privately. Share a few details and the owner will respond personally — or reach out directly on WhatsApp for the fastest response.
+            The studio is privately offered for sale. Share a few details below and the owner will respond personally — or reach out directly on WhatsApp for the fastest response.
           </p>
           <div class="contact-meta">
             <div>
-              <h5>Email</h5>
-              <a href="mailto:hello@mayanstudios.example">hello@mayanstudios.example</a>
+              <h5>WhatsApp</h5>
+              <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." target="_blank" rel="noopener">+971 54 702 6170</a>
             </div>
             <div>
-              <h5>WhatsApp</h5>
-              <a href="https://wa.me/971500000000" target="_blank" rel="noopener">+971 50 000 0000</a>
+              <h5>Booking.com</h5>
+              <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">View the 8.5★ listing →</a>
             </div>
             <div>
               <h5>Location</h5>
@@ -203,11 +240,16 @@ const distances = [
         </div>
 
         <div class="contact-form-wrap fade-in">
-          <InquiryForm property="Mayan Studios Portfolio" variant="dark" />
+          <InquiryForm property="Luxury Studios on Yas Island" variant="dark" />
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Floating WhatsApp button -->
+  <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Yas%20Island%20studio." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp the owner">
+    <Icon name="whatsapp" size={26} />
+  </a>
 </Layout>
 
 <style>
@@ -235,14 +277,14 @@ const distances = [
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(17,25,59,0.55) 0%, rgba(17,25,59,0.30) 35%, rgba(17,25,59,0.75) 100%);
+    background: linear-gradient(180deg, rgba(17,25,59,0.55) 0%, rgba(17,25,59,0.30) 35%, rgba(17,25,59,0.80) 100%);
   }
   .hero-content {
     position: relative;
     z-index: 2;
     padding-top: 8rem;
     padding-bottom: 8rem;
-    max-width: 860px;
+    max-width: 880px;
   }
   .hero-eyebrow {
     font-size: 0.75rem;
@@ -255,23 +297,38 @@ const distances = [
   }
   .hero h1 {
     color: var(--white);
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    line-height: 1.0;
+    font-size: clamp(2.25rem, 6.5vw, 4.75rem);
+    line-height: 1.05;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
   }
   .hero-tag {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(1.125rem, 2vw, 1.5rem);
-    color: rgba(255,255,255,0.85);
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    color: rgba(255,255,255,0.88);
     margin-bottom: 1.75rem;
+    max-width: 680px;
   }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: var(--white);
+    font-size: 0.92rem;
+    padding: 0.55rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge strong { color: var(--gold-light); font-weight: 700; }
+  .badge-star { color: var(--gold-light); display: inline-flex; }
   .hero-lead {
     font-size: 1.05rem;
     line-height: 1.7;
     color: rgba(255,255,255,0.85);
-    max-width: 600px;
+    max-width: 620px;
     margin-bottom: 2.5rem;
   }
   .hero-cta {
@@ -315,7 +372,7 @@ const distances = [
     gap: 2rem;
     margin-top: 3.5rem;
     width: 100%;
-    max-width: 640px;
+    max-width: 720px;
     padding-top: 2.5rem;
     border-top: 1px solid var(--gray-warm);
   }
@@ -366,7 +423,7 @@ const distances = [
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(17,25,59,0.35);
+    background: rgba(17,25,59,0.45);
   }
   .card-link { display: block; }
   .card-image {
@@ -436,6 +493,43 @@ const distances = [
     transform: translateX(6px);
   }
 
+  /* HIGHLIGHTS */
+  .highlights-section { background: var(--ivory); }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 900px) { .highlights-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .highlights-grid { grid-template-columns: 1fr; } }
+  .highlight {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--gray-warm);
+  }
+  .highlight-icon { color: var(--gold); margin-bottom: 1rem; }
+  .highlight h4 {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    font-family: var(--font-serif);
+    font-weight: 600;
+  }
+  .highlight p { font-size: 0.9rem; line-height: 1.6; }
+  .highlight-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 768px) { .highlight-images { grid-template-columns: 1fr; } }
+  .highlight-images img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
   /* LOCATION */
   .location-section { background: var(--ivory-warm); }
   .location-grid {
@@ -469,9 +563,7 @@ const distances = [
     letter-spacing: 0.04em;
     font-variant-numeric: tabular-nums;
   }
-  .location-photo {
-    position: relative;
-  }
+  .location-photo { position: relative; }
   .location-photo img {
     width: 100%;
     aspect-ratio: 4/5;
@@ -490,48 +582,38 @@ const distances = [
     font-weight: 600;
   }
 
-  /* AMENITIES */
-  .amenities-section { background: var(--white); }
-  .amenities-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  /* Booking banner */
+  .booking-banner {
+    background: var(--navy);
+    color: var(--white);
+    padding: 3rem 0;
+  }
+  .booking-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 2rem;
-    margin-bottom: 4rem;
+    flex-wrap: wrap;
   }
-  @media (max-width: 900px) { .amenities-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 480px) { .amenities-grid { grid-template-columns: 1fr; } }
-  .amenity {
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--gray-warm);
+  .booking-text {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
   }
-  .amenity-icon {
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .amenity h4 {
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+  .booking-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
     color: var(--navy);
-    letter-spacing: 0.05em;
-    text-transform: none;
+    padding: 0.8rem 1.1rem;
     font-family: var(--font-serif);
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1;
   }
-  .amenity p {
-    font-size: 0.88rem;
-    line-height: 1.6;
-  }
-  .amenity-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  @media (max-width: 768px) { .amenity-images { grid-template-columns: 1fr; } }
-  .amenity-images img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-  }
+  .booking-text h3 { margin-bottom: 0.25rem; font-family: var(--font-serif); font-size: 1.2rem; }
+  .booking-text p { font-style: italic; max-width: 540px; }
 
   /* CONTACT */
   .contact-section {
@@ -566,4 +648,26 @@ const distances = [
   .contact-meta a { color: var(--white); font-size: 1rem; }
   .contact-meta a:hover { color: var(--gold); }
   .contact-meta span { color: rgba(255,255,255,0.85); }
+
+  /* WhatsApp floating button */
+  .whatsapp-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    z-index: 90;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .whatsapp-fab:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(37,211,102,0.6);
+    color: var(--white);
+  }
 </style>

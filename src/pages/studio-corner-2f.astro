@@ -3,42 +3,47 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import InquiryForm from '../components/InquiryForm.astro';
 import Gallery from '../components/Gallery.astro';
-import { studioAGallery } from '../data/properties';
+import { studio2Gallery } from '../data/properties';
 
 const interior = [
-  { icon: 'bed', text: 'Comfortable sleeping area with built-in wardrobe' },
-  { icon: 'area', text: 'Ample open-plan living and dining' },
-  { icon: 'check', text: 'Kitchen with built-in cabinets' },
-  { icon: 'bath', text: 'Well-maintained bathroom with bathtub' },
-  { icon: 'view', text: 'Spacious and private balcony' },
-  { icon: 'check', text: 'Centralised air conditioning' },
+  { icon: 'check', text: 'Fully Furnished & Move-In Ready' },
+  { icon: 'light', text: 'Corner Unit with Enhanced Natural Light' },
+  { icon: 'bed', text: 'Comfortable Sleeping Area with Quality Bedding' },
+  { icon: 'sofa', text: 'Stylish Living Area with Sofa, Smart TV & Dining' },
+  { icon: 'check', text: 'Fully Equipped Kitchen (Oven, Microwave, Washing Machine, Coffee Maker)' },
+  { icon: 'bath', text: 'Premium Bathroom with Designer Fixtures & Rain Shower' },
+  { icon: 'view', text: 'Spacious Private Balcony with Sea & Community Views' },
+  { icon: 'ac', text: 'Centralised Air Conditioning' },
+  { icon: 'check', text: 'Built-in Wardrobe' },
 ];
 
 const building = [
-  { icon: 'concierge', text: '24/7 concierge and security' },
-  { icon: 'gym', text: 'Fully-equipped gym' },
-  { icon: 'pool', text: 'Swimming pools and children\'s pools' },
-  { icon: 'garden', text: 'Indoor and outdoor children\'s playgrounds' },
-  { icon: 'bbq', text: 'Barbecue areas' },
-  { icon: 'beach', text: 'Direct beach access' },
-  { icon: 'parking', text: 'Underground parking' },
-  { icon: 'sauna', text: 'Sauna and steam rooms' },
+  { icon: 'concierge', text: '24/7 Concierge & Security' },
+  { icon: 'gym', text: 'Fully-Equipped Gym' },
+  { icon: 'pool', text: 'Infinity Pool & Children\'s Pools' },
+  { icon: 'garden', text: 'Indoor & Outdoor Children\'s Playgrounds' },
+  { icon: 'bbq', text: 'Barbecue Areas' },
+  { icon: 'beach', text: 'Direct Private Beach Access' },
+  { icon: 'parking', text: 'Underground Covered Parking' },
+  { icon: 'sauna', text: 'Sauna & Steam Rooms' },
 ];
 
 const nearby = [
-  { place: 'Beach & golf course', time: '1 min' },
-  { place: 'Yas Bay restaurants', time: '3 min' },
+  { place: 'Private Beach & Yas Links Golf', time: '1 min' },
+  { place: 'Yas Bay Restaurants', time: '3 min' },
   { place: 'Yas Marina Circuit (F1)', time: '7 min' },
-  { place: 'Yas Mall (shopping & cinemas)', time: '9 min' },
+  { place: 'Ferrari World & Yas Waterworld', time: '7 min' },
+  { place: 'Yas Mall (Shopping & Cinemas)', time: '9 min' },
   { place: 'Zayed International Airport', time: '10 min' },
+  { place: 'Downtown Abu Dhabi', time: '25 min' },
   { place: 'Dubai', time: '50 min' },
 ];
 
 const listingSchema = {
   '@context': 'https://schema.org',
   '@type': 'Apartment',
-  name: 'Studio Apartment at Mayan 2 — 5th Floor',
-  description: 'A studio residence at Mayan 2, Yas Island, Abu Dhabi with private balcony, built-in wardrobe, full bathroom and direct access to resort-grade amenities.',
+  name: 'Furnished Corner Studio · Mayan 2 · 2nd Floor · Yas Island',
+  description: 'A fully furnished corner studio at Mayan 2, Yas Island, Abu Dhabi. 2nd floor, ~550 sqft, private balcony with sea view, designer bathroom, fully-equipped kitchen, and access to private beach, infinity pool, gym, sauna. Rated 8.5 on Booking.com.',
   numberOfRooms: 1,
   floorSize: { '@type': 'QuantitativeValue', value: 550, unitCode: 'FTK' },
   address: {
@@ -47,31 +52,41 @@ const listingSchema = {
     addressLocality: 'Abu Dhabi',
     addressCountry: 'AE',
   },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '8.5',
+    ratingCount: '1',
+    bestRating: '10',
+    reviewCount: '1',
+  },
   amenityFeature: building.map((b) => ({ '@type': 'LocationFeatureSpecification', name: b.text })),
 };
 ---
 <Layout
-  title="Luxurious Studio · Mayan 2 · 5th Floor | Vacant Now"
-  description="HOT DEAL — vacant studio at Mayan 2, Yas Island, Abu Dhabi. 5th floor, 550 sqft, private balcony, built-in wardrobe, full amenities, direct beach access."
-  ogImage="/images/studio-a/01-balcony-sunset.webp"
+  title="Furnished Corner Studio · Mayan 2 · 2F · For Sale · 8.5★ Booking.com"
+  description="Fully furnished corner studio for sale at Mayan 2, Yas Island. 2nd floor, ~550 sqft, sea-view balcony, designer interiors, 8.5★ Booking.com rated. Turnkey luxury on Yas Island."
+  ogImage="/images/studio-2f/01-bedroom-living.jpg"
 >
   <script type="application/ld+json" set:html={JSON.stringify(listingSchema)} />
 
   <!-- Top hero with title overlay -->
   <section class="listing-hero">
-    <div class="hero-image" style="background-image: url('/images/studio-a/01-balcony-sunset.webp')"></div>
+    <div class="hero-image" style="background-image: url('/images/studio-2f/01-bedroom-living.jpg')"></div>
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <a href="/" class="back-link">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Back to Portfolio</span>
+        <span>Back to Listings</span>
       </a>
       <div class="status-pill">
         <span class="dot"></span>
-        <span>Vacant · Available Now</span>
+        <span>For Sale · Furnished · Move-In Ready</span>
       </div>
-      <h1>Luxurious Studio in Mayan 2</h1>
-      <div class="hero-sub">5th Floor · Yas Island · Abu Dhabi</div>
+      <h1>Furnished Corner Studio</h1>
+      <div class="hero-sub">Mayan 2 · 2nd Floor · Yas Island · Abu Dhabi</div>
+      <div class="hero-rating">
+        <span class="rating-pill"><Icon name="star" size={14} /> <strong>8.5</strong> · Rated on Booking.com</span>
+      </div>
     </div>
   </section>
 
@@ -79,16 +94,35 @@ const listingSchema = {
   <section class="specs">
     <div class="container specs-inner">
       <div class="spec"><Icon name="bed" size={20} /><div><span class="spec-num">Studio</span><span class="spec-label">Layout</span></div></div>
-      <div class="spec"><Icon name="bath" size={20} /><div><span class="spec-num">1 Bath</span><span class="spec-label">With Bathtub</span></div></div>
-      <div class="spec"><Icon name="area" size={20} /><div><span class="spec-num">550 sqft</span><span class="spec-label">Floor Area</span></div></div>
-      <div class="spec"><Icon name="floor" size={20} /><div><span class="spec-num">5th Floor</span><span class="spec-label">Mayan 2</span></div></div>
-      <div class="spec"><Icon name="vacant" size={20} /><div><span class="spec-num">Vacant</span><span class="spec-label">Move-in Ready</span></div></div>
+      <div class="spec"><Icon name="bath" size={20} /><div><span class="spec-num">1 Bath</span><span class="spec-label">Designer Fixtures</span></div></div>
+      <div class="spec"><Icon name="area" size={20} /><div><span class="spec-num">~550 sqft</span><span class="spec-label">Floor Area</span></div></div>
+      <div class="spec"><Icon name="floor" size={20} /><div><span class="spec-num">2nd Floor</span><span class="spec-label">Corner Unit</span></div></div>
+      <div class="spec"><Icon name="check" size={20} /><div><span class="spec-num">Furnished</span><span class="spec-label">For Sale</span></div></div>
     </div>
   </section>
 
   <!-- Gallery -->
   <section class="container-narrow gallery-wrap">
-    <Gallery images={studioAGallery} />
+    <Gallery images={studio2Gallery} />
+  </section>
+
+  <!-- Booking.com review/badge -->
+  <section class="section booking-review">
+    <div class="container-narrow review-inner">
+      <div class="review-card fade-in">
+        <div class="review-rating">
+          <div class="rating-num">8.5</div>
+          <div class="rating-meta">
+            <div class="rating-label">Booking.com</div>
+            <div class="rating-stars" aria-hidden="true"><Icon name="star" size={14} /><Icon name="star" size={14} /><Icon name="star" size={14} /><Icon name="star" size={14} /><Icon name="star" size={14} /></div>
+          </div>
+        </div>
+        <blockquote>
+          "Perfect luxury stay with excellent value for money. Prime location near Yas Beach, F1 Circuit, Ferrari World. Spotlessly clean, well-equipped, exceptional facilities."
+        </blockquote>
+        <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener" class="review-link">View the listing on Booking.com →</a>
+      </div>
+    </div>
   </section>
 
   <!-- Description -->
@@ -96,14 +130,17 @@ const listingSchema = {
     <div class="container-narrow">
       <div class="fade-in">
         <span class="eyebrow">The Residence</span>
-        <h2>Great Community View · Vacant Now</h2>
+        <h2>Turnkey Luxury · Furnished &amp; Move-In Ready</h2>
         <div class="gold-divider"></div>
         <div class="prose">
           <p class="lead">
-            Located in the heart of Yas Island — moments from Ferrari World, Yas Marina Circuit, and Yas Waterworld — this studio at Mayan 2 presents a refined lifestyle in one of Abu Dhabi's most sought-after destinations.
+            Located in the heart of Yas Island, just moments from iconic attractions such as Ferrari World, Yas Marina Circuit, and Yas Waterworld, this beautifully furnished corner studio at Mayan 2 presents a refined lifestyle in one of Abu Dhabi's most sought-after destinations.
           </p>
           <p>
-            Designed for those who value comfort, convenience, and elegance, the residence offers a sophisticated living space complemented by the dynamic energy of island life — a well-connected address for individuals seeking an upscale, low-maintenance home in Abu Dhabi.
+            Rated <strong>8.5 on Booking.com</strong> by guests who praised its prime location, spotless condition, and exceptional amenities — this is a turnkey investment opportunity or an immediate move-in luxury home. As a corner unit on the 2nd floor, it benefits from enhanced natural light and twin balcony exposures, with views of both the Arabian Gulf and the resort-style Mayan community gardens.
+          </p>
+          <p>
+            Designed for those who value comfort, convenience, and elegance, the residence offers a sophisticated, fully furnished living space complemented by the dynamic energy of island life — a well-connected address for individuals seeking an upscale, low-maintenance home in Abu Dhabi.
           </p>
         </div>
       </div>
@@ -130,7 +167,7 @@ const listingSchema = {
 
         <div class="features-col fade-in">
           <span class="eyebrow">Building</span>
-          <h3>Facilities & Amenities</h3>
+          <h3>Facilities &amp; Amenities</h3>
           <div class="gold-divider"></div>
           <ul class="feature-list">
             {building.map((f) => (
@@ -148,18 +185,27 @@ const listingSchema = {
   <!-- Amenity images -->
   <section class="section amenity-images-section">
     <div class="container">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Building Amenities</span>
+        <h2>Resort-grade living, every day.</h2>
+        <div class="gold-divider"></div>
+      </div>
       <div class="amenity-images-grid fade-in">
         <figure>
-          <img src="/images/amenities/rooftop-pool.webp" alt="Rooftop pool" loading="lazy" />
-          <figcaption>Rooftop pool</figcaption>
+          <img src="/images/amenities/infinity-pool.jpg" alt="Resort infinity pool with beach view" loading="lazy" />
+          <figcaption>Infinity pool</figcaption>
         </figure>
         <figure>
-          <img src="/images/amenities/gym.webp" alt="Building gym" loading="lazy" />
+          <img src="/images/amenities/beach.jpg" alt="Private white-sand beach with turquoise water" loading="lazy" />
+          <figcaption>Private beach</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/amenities/gym-new.jpg" alt="Fully-equipped building gym" loading="lazy" />
           <figcaption>Fully-equipped gym</figcaption>
         </figure>
         <figure>
-          <img src="/images/amenities/kids-splash.jpeg" alt="Children's splash area" loading="lazy" />
-          <figcaption>Kids' splash area</figcaption>
+          <img src="/images/amenities/sauna.jpg" alt="Sauna and wellness suite" loading="lazy" />
+          <figcaption>Sauna &amp; steam</figcaption>
         </figure>
       </div>
     </div>
@@ -199,16 +245,16 @@ const listingSchema = {
 
       <div class="neighbourhood-grid fade-in">
         <figure>
-          <img src="/images/location/al-marasy-marina.jpeg" alt="Al Marasy Marina" loading="lazy" />
-          <figcaption>Al Marasy Marina · 3 min</figcaption>
+          <img src="/images/amenities/beach-watersports.jpg" alt="Beach with water sports equipment" loading="lazy" />
+          <figcaption>Private beach · 1 min</figcaption>
         </figure>
         <figure>
-          <img src="/images/location/yas-bay-restaurants.jpeg" alt="Yas Bay restaurants" loading="lazy" />
-          <figcaption>Yas Bay restaurants · 3 min</figcaption>
+          <img src="/images/amenities/beach-panoramic.jpg" alt="Panoramic beach view with sun loungers" loading="lazy" />
+          <figcaption>Yas Beach · 1 min</figcaption>
         </figure>
         <figure>
-          <img src="/images/location/mayan-exterior.jpeg" alt="Mayan from the sea" loading="lazy" />
-          <figcaption>Mayan 2 · waterfront</figcaption>
+          <img src="/images/amenities/beach-water.jpg" alt="Beach view with Mayan building" loading="lazy" />
+          <figcaption>Mayan 2 · Beachfront</figcaption>
         </figure>
       </div>
     </div>
@@ -223,21 +269,27 @@ const listingSchema = {
           <h2 class="white-h">Schedule a Private Viewing</h2>
           <div class="gold-divider"></div>
           <p class="muted-on-dark">
-            The studio is vacant and available for immediate move-in. Share a few details below and the owner will follow up personally to arrange a private viewing.
+            The studio is furnished, move-in ready, and privately offered for sale. Share a few details and the owner will follow up personally — or message directly on WhatsApp for the fastest response.
           </p>
           <div class="contact-meta">
             <div>
-              <h5>Email</h5>
-              <a href="mailto:hello@mayanstudios.example">hello@mayanstudios.example</a>
+              <h5>WhatsApp</h5>
+              <a class="wa-link" href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Furnished%20Corner%20Studio%20at%20Mayan%202%2C%202nd%20Floor." target="_blank" rel="noopener">
+                <Icon name="whatsapp" size={18} /> +971 54 702 6170
+              </a>
             </div>
             <div>
-              <h5>WhatsApp</h5>
-              <a href="https://wa.me/971500000000?text=Hi%2C%20I%27m%20interested%20in%20the%205th%20Floor%20Studio%20at%20Mayan%202." target="_blank" rel="noopener">+971 50 000 0000</a>
+              <h5>Booking.com</h5>
+              <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">View the 8.5★ listing →</a>
+            </div>
+            <div>
+              <h5>Location</h5>
+              <span>Mayan 2 · Yas Island · Abu Dhabi</span>
             </div>
           </div>
         </div>
         <div class="contact-form-wrap fade-in">
-          <InquiryForm property="Studio Apartment · Mayan 2 · 5th Floor" variant="dark" />
+          <InquiryForm property="Furnished Corner Studio · Mayan 2 · 2F" variant="dark" />
         </div>
       </div>
     </div>
@@ -246,11 +298,16 @@ const listingSchema = {
   <!-- Sticky mobile CTA -->
   <div class="sticky-cta">
     <div class="sticky-text">
-      <div class="sticky-title">Mayan 2 · 5F</div>
-      <div class="sticky-sub">Vacant · Available Now</div>
+      <div class="sticky-title">Furnished · Mayan 2 · 2F</div>
+      <div class="sticky-sub">8.5★ · For Sale</div>
     </div>
-    <a href="#contact" class="btn btn-gold sticky-btn">Inquire</a>
+    <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Furnished%20Corner%20Studio." target="_blank" rel="noopener" class="btn btn-gold sticky-btn">WhatsApp</a>
   </div>
+
+  <!-- Floating WhatsApp button (desktop) -->
+  <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20Furnished%20Corner%20Studio." target="_blank" rel="noopener" class="whatsapp-fab" aria-label="WhatsApp the owner">
+    <Icon name="whatsapp" size={26} />
+  </a>
 </Layout>
 
 <style>
@@ -325,7 +382,21 @@ const listingSchema = {
     font-style: italic;
     font-size: clamp(1rem, 1.6vw, 1.25rem);
     color: rgba(255,255,255,0.85);
+    margin-bottom: 1.25rem;
   }
+  .hero-rating { display: inline-block; }
+  .rating-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .rating-pill strong { font-weight: 700; }
 
   /* Specs */
   .specs {
@@ -375,8 +446,60 @@ const listingSchema = {
     padding-bottom: 2rem;
   }
 
+  /* Booking review card */
+  .booking-review { background: var(--ivory); padding: 2rem 0 4rem; }
+  .review-inner { display: flex; justify-content: center; }
+  .review-card {
+    background: var(--white);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    max-width: 720px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+    border-top: 3px solid var(--gold);
+  }
+  .review-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .rating-num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .rating-meta { text-align: left; }
+  .rating-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .rating-stars { color: var(--gold); display: flex; gap: 1px; margin-top: 4px; }
+  .review-card blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--navy);
+    max-width: 580px;
+  }
+  .review-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
   /* Description */
-  .description-section { background: var(--ivory); }
+  .description-section { background: var(--white); }
   .prose .lead {
     font-family: var(--font-serif);
     font-size: 1.35rem;
@@ -385,10 +508,11 @@ const listingSchema = {
     font-weight: 400;
     margin-bottom: 1.5rem;
   }
-  .prose p { font-size: 1.02rem; line-height: 1.85; }
+  .prose p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.25rem; }
+  .prose strong { color: var(--navy); font-weight: 600; }
 
   /* Features */
-  .features-section { background: var(--white); }
+  .features-section { background: var(--ivory); }
   .features-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -417,23 +541,24 @@ const listingSchema = {
     place-items: center;
     width: 36px;
     height: 36px;
-    background: var(--ivory);
+    background: var(--white);
     color: var(--gold);
     flex-shrink: 0;
   }
 
   /* Amenity images */
-  .amenity-images-section { background: var(--ivory-warm); padding-top: 0; }
+  .amenity-images-section { background: var(--white); }
   .amenity-images-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
-  @media (max-width: 768px) { .amenity-images-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 900px) { .amenity-images-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .amenity-images-grid { grid-template-columns: 1fr; } }
   .amenity-images-grid figure { position: relative; }
   .amenity-images-grid img {
     width: 100%;
-    aspect-ratio: 4/3;
+    aspect-ratio: 4/5;
     object-fit: cover;
   }
   .amenity-images-grid figcaption {
@@ -450,7 +575,7 @@ const listingSchema = {
   }
 
   /* Location */
-  .location-section { background: var(--white); }
+  .location-section { background: var(--ivory-warm); }
   .location-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -467,7 +592,7 @@ const listingSchema = {
     background: var(--ivory-warm);
   }
   .nearby-list {
-    background: var(--ivory);
+    background: var(--white);
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
@@ -509,7 +634,7 @@ const listingSchema = {
     font-weight: 600;
   }
 
-  /* Contact (matches landing styles) */
+  /* Contact */
   .contact-section { background: var(--navy); color: var(--white); }
   .white-h { color: var(--white); }
   .muted-on-dark { color: rgba(255,255,255,0.7); }
@@ -532,8 +657,9 @@ const listingSchema = {
     margin-bottom: 0.35rem;
     font-weight: 600;
   }
-  .contact-meta a { color: var(--white); font-size: 1rem; }
+  .contact-meta a { color: var(--white); font-size: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; }
   .contact-meta a:hover { color: var(--gold); }
+  .wa-link { color: var(--gold-light) !important; }
 
   /* Sticky mobile CTA */
   .sticky-cta {
@@ -560,5 +686,24 @@ const listingSchema = {
   }
   @media (max-width: 768px) {
     .sticky-cta { display: flex; }
+    .whatsapp-fab { display: none; }
   }
+
+  /* WhatsApp floating button */
+  .whatsapp-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--white);
+    display: grid;
+    place-items: center;
+    z-index: 90;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.45);
+    transition: transform 200ms ease;
+  }
+  .whatsapp-fab:hover { transform: scale(1.08); color: var(--white); }
 </style>
