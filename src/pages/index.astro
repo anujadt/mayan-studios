@@ -1,21 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
-import InquiryForm from '../components/InquiryForm.astro';
-import ComparisonTable from '../components/ComparisonTable.astro';
-import StickyCTA from '../components/StickyCTA.astro';
-import { revenueStats, whatsappURL } from '../data/properties';
-
-const highlights = [
-  { icon: 'beach', label: 'Private Beach' },
-  { icon: 'pool', label: 'Infinity Pool' },
-  { icon: 'star', label: '8.5★ Booking.com' },
-  { icon: 'check', label: '69% Occupancy' },
-  { icon: 'view', label: 'AED 148K Revenue' },
-];
+import { corner, cityView, whatsappURL, whatsappDisplay } from '../data/properties';
 
 const distances = [
-  { place: 'Private beach & golf course', time: '1 min' },
+  { place: 'Private beach & Yas Links golf', time: '1 min' },
   { place: 'Yas Bay restaurants', time: '3 min' },
   { place: 'Yas Marina Circuit (F1)', time: '7 min' },
   { place: 'Ferrari World & Yas Waterworld', time: '7 min' },
@@ -26,8 +15,8 @@ const distances = [
 ];
 ---
 <Layout
-  title="Luxury Studio Apartments on Yas Island · Turnkey · 8.5★ Booking.com"
-  description="A turnkey investment on Yas Island — AED 148K annual revenue, fully furnished, ready for guests or owner. A privately offered corner studio at Mayan 2, Abu Dhabi."
+  title="Mayan Studios · Luxury Studio Apartments on Yas Island"
+  description="A private portfolio of two luxury studio apartments at Mayan 2, Yas Island, Abu Dhabi. One available, one sold."
   ogImage="/images/amenities/infinity-pool.jpg"
 >
   <!-- HERO -->
@@ -37,96 +26,56 @@ const distances = [
     <div class="hero-content container">
       <span class="hero-eyebrow">Mayan 2 · Yas Island · Abu Dhabi</span>
       <h1>Luxury Studio Apartments<br/>on Yas Island</h1>
-      <div class="hero-tag">A turnkey investment on Yas Island — AED 148K annual revenue, fully furnished, ready for guests or owner.</div>
-      <div class="hero-badge">
-        <span class="badge-star"><Icon name="star" size={16} /></span>
-        <span><strong>8.5</strong> · Rated on Booking.com · {revenueStats.reservations} reservations</span>
-      </div>
-      <div class="hero-cta">
-        <a href="/studio-corner-2f" class="btn btn-gold">View the Studio</a>
-        <a href={whatsappURL} class="btn btn-outline-light" target="_blank" rel="noopener">
-          <Icon name="whatsapp" size={18} /> WhatsApp the Owner
-        </a>
-      </div>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+      <p class="hero-tag">A private portfolio of two studios at Aldar's waterfront community — set between the Arabian Gulf and Yas Links Golf Course.</p>
     </div>
   </section>
 
-  <!-- HIGHLIGHTS STRIP -->
-  <section class="strip">
-    <div class="container strip-inner">
-      {highlights.map((h) => (
-        <div class="strip-item">
-          <span class="strip-icon"><Icon name={h.icon} size={20} /></span>
-          <span class="strip-label">{h.label}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- LEAD CARD -->
-  <section class="section lead-section">
+  <!-- PORTFOLIO -->
+  <section class="section portfolio">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="eyebrow">The Listing</span>
-        <h2>A turnkey corner studio at Mayan 2.</h2>
-        <div class="gold-divider"></div>
-        <p class="lead-intro">Fully furnished. Corner unit. Sea-view balcony. 8.5★ on Booking.com with a documented two-year operating history. Available privately, directly from the owner.</p>
+      <div class="portfolio-head fade-in">
+        <span class="eyebrow">The Portfolio</span>
+        <h2>Two studios at Mayan 2.</h2>
+        <div class="gold-divider center"></div>
       </div>
 
-      <article class="lead-card fade-in">
-        <a href="/studio-corner-2f" class="lead-link">
-          <div class="lead-image">
-            <img src="/images/studio-2f/01-bedroom-living.jpg" alt="Furnished corner studio at Mayan 2, 2nd floor" loading="eager" />
-            <span class="lead-badge">Available · For Sale</span>
-            <span class="lead-revenue">AED 148K · Annual Revenue</span>
+      <div class="portfolio-grid">
+        <a href={corner.href} class="prop-card fade-in">
+          <div class="prop-image">
+            <img src={corner.cardImage} alt="Luxury corner studio interior at Mayan 2" loading="eager" />
+            <span class="prop-badge badge-available">{corner.badge}</span>
           </div>
-          <div class="lead-body">
-            <div class="lead-meta-top">
-              <span>2nd Floor</span><span class="dot">·</span>
-              <span>Corner Unit</span><span class="dot">·</span>
-              <span>Fully Furnished</span><span class="dot">·</span>
-              <span>~550 sqft</span>
+          <div class="prop-body">
+            <div class="prop-meta">
+              <span>{corner.floor}</span><span class="dot">·</span><span>Furnished</span>
             </div>
-            <h3 class="lead-title">Furnished Corner Studio</h3>
-            <p class="lead-hook">
-              Move-in ready or guest-ready from day one. Twin-balcony exposures, designer interiors, and access to the full Mayan amenity collection — private beach, infinity pool, gym, sauna.
-            </p>
-            <div class="lead-cta">
-              <span>View Studio Details</span>
+            <h3 class="prop-title">{corner.title}</h3>
+            <p class="prop-hook">{corner.hook}</p>
+            <div class="prop-cta">
+              <span>View Studio</span>
               <Icon name="arrow" size={16} />
             </div>
           </div>
         </a>
-      </article>
-    </div>
-  </section>
 
-  <!-- COLLAPSED FOMO SECTION -->
-  <section class="section fomo-section">
-    <div class="container">
-      <details class="fomo-details fade-in">
-        <summary>
-          <div class="summary-text">
-            <span class="eyebrow">Building Context</span>
-            <h2>The Other Studio in This Building</h2>
-            <p class="summary-sub">Another unit in this building was recently taken off market. Here's how the two compare.</p>
+        <a href={cityView.href} class="prop-card sold fade-in">
+          <div class="prop-image">
+            <img src={cityView.cardImage} alt="Balcony sunset view from the 5th floor studio at Mayan 2" loading="lazy" />
+            <span class="prop-badge badge-sold">{cityView.badge}</span>
           </div>
-          <span class="summary-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </summary>
-
-        <div class="fomo-body">
-          <ComparisonTable />
-          <p class="fomo-note">
-            The 5th floor unit was an unfurnished standard layout. The available 2nd floor corner studio is a different proposition — corner exposure, fully furnished, and with a documented Booking.com revenue history.
-          </p>
-        </div>
-      </details>
+          <div class="prop-body">
+            <div class="prop-meta">
+              <span>{cityView.floor}</span><span class="dot">·</span><span>{cityView.view}</span>
+            </div>
+            <h3 class="prop-title">{cityView.title}</h3>
+            <p class="prop-hook">{cityView.hook}</p>
+            <div class="prop-cta">
+              <span>View Studio</span>
+              <Icon name="arrow" size={16} />
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -159,66 +108,32 @@ const distances = [
     </div>
   </section>
 
-  <!-- BOOKING BANNER -->
-  <section class="booking-banner fade-in">
-    <div class="container booking-inner">
-      <div class="booking-text">
-        <span class="booking-rating"><Icon name="star" size={20} /><strong>8.5</strong></span>
-        <div>
-          <h3 class="white-h">{revenueStats.reservations} reservations · 69% occupancy</h3>
-          <p class="muted-on-dark">"Perfect luxury stay with excellent value for money. Spotlessly clean, well-equipped, exceptional facilities."</p>
-        </div>
-      </div>
-      <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener" class="btn btn-gold">View on Booking.com</a>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact" class="section contact-section">
     <div class="container">
-      <div class="contact-grid">
-        <div class="contact-text fade-in">
-          <span class="eyebrow gold-on-dark">Inquiries</span>
-          <h2 class="white-h">Schedule a private viewing.</h2>
-          <div class="gold-divider"></div>
-          <p class="muted-on-dark">
-            The studio is privately offered for sale. Share a few details and the owner will respond personally — or reach out on WhatsApp for the fastest response.
-          </p>
-          <div class="contact-meta">
-            <div>
-              <h5>WhatsApp</h5>
-              <a href={whatsappURL} target="_blank" rel="noopener">+971 54 702 6170</a>
-            </div>
-            <div>
-              <h5>Booking.com</h5>
-              <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">View the 8.5★ listing →</a>
-            </div>
-            <div>
-              <h5>Property Brief</h5>
-              <a href="/mayan-2f-brief.html" target="_blank" rel="noopener">Download one-pager →</a>
-            </div>
-            <div>
-              <h5>Location</h5>
-              <span>Mayan 2 · Yas Island · Abu Dhabi</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-form-wrap fade-in">
-          <InquiryForm property="Luxury Studios on Yas Island" variant="dark" />
+      <div class="contact-inner fade-in">
+        <span class="eyebrow gold-on-dark">Contact</span>
+        <h2 class="white-h">Schedule a private viewing.</h2>
+        <div class="gold-divider center"></div>
+        <p class="muted-on-dark">
+          Reach out directly to the owner for viewings, details, or any questions.
+        </p>
+        <div class="contact-actions">
+          <a href={whatsappURL} target="_blank" rel="noopener" class="btn btn-gold">
+            <Icon name="whatsapp" size={18} /> WhatsApp {whatsappDisplay}
+          </a>
+          <a href="/contact" class="btn btn-outline-light">Send a Message</a>
         </div>
       </div>
     </div>
   </section>
-
-  <StickyCTA />
 </Layout>
 
 <style>
   /* HERO */
   .hero {
     position: relative;
-    min-height: 92vh;
+    min-height: 88vh;
     display: flex;
     align-items: center;
     color: var(--white);
@@ -234,18 +149,18 @@ const distances = [
   }
   @keyframes kenburns {
     from { transform: scale(1.0) translate(0,0); }
-    to { transform: scale(1.12) translate(-1%, -2%); }
+    to { transform: scale(1.10) translate(-1%, -2%); }
   }
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(17,25,59,0.5) 0%, rgba(17,25,59,0.25) 35%, rgba(17,25,59,0.85) 100%);
+    background: linear-gradient(180deg, rgba(17,25,59,0.45) 0%, rgba(17,25,59,0.2) 40%, rgba(17,25,59,0.7) 100%);
   }
   .hero-content {
     position: relative;
     z-index: 2;
     padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-bottom: 6rem;
     max-width: 880px;
   }
   .hero-eyebrow {
@@ -262,160 +177,86 @@ const distances = [
     font-size: clamp(2.25rem, 6.5vw, 4.75rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
   .hero-tag {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
     color: rgba(255,255,255,0.92);
-    margin-bottom: 1.75rem;
     max-width: 720px;
-    line-height: 1.4;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.22);
-    color: var(--white);
-    font-size: 0.92rem;
-    padding: 0.55rem 1rem;
-    margin-bottom: 2rem;
-  }
-  .hero-badge strong { color: var(--gold-light); font-weight: 700; }
-  .badge-star { color: var(--gold-light); display: inline-flex; }
-  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .hero-scroll {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  .scroll-line {
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(180deg, var(--gold), transparent);
-    animation: pulse 2s ease infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 0.5; transform: scaleY(0.6); transform-origin: top; }
-    50% { opacity: 1; transform: scaleY(1); }
+    line-height: 1.5;
   }
 
-  /* STRIP */
-  .strip {
-    background: var(--navy);
-    color: var(--white);
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-  .strip-inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 2.5rem;
-    align-items: center;
-    justify-content: space-around;
-    padding: 1.25rem 1.5rem;
-  }
-  .strip-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-  .strip-icon { color: var(--gold); display: inline-flex; }
-
-  /* LEAD CARD */
-  .lead-section { background: var(--ivory); }
-  .section-header {
+  /* PORTFOLIO */
+  .portfolio { background: var(--ivory); }
+  .portfolio-head {
     text-align: center;
     margin-bottom: 3.5rem;
   }
-  .section-header .gold-divider { margin-left: auto; margin-right: auto; }
-  .lead-intro {
-    max-width: 640px;
-    margin: 1.25rem auto 0;
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--text-muted);
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1180px;
+    margin: 0 auto;
   }
-  .lead-card {
+  @media (max-width: 880px) {
+    .portfolio-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  }
+  .prop-card {
     background: var(--white);
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    max-width: 1080px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     transition: transform 500ms ease, box-shadow 500ms ease;
+    color: var(--navy);
   }
-  .lead-card:hover {
+  .prop-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
   }
-  .lead-link { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; }
-  @media (max-width: 768px) {
-    .lead-link { grid-template-columns: 1fr; }
-  }
-  .lead-image {
+  .prop-image {
     position: relative;
     aspect-ratio: 4/3;
     overflow: hidden;
   }
-  .lead-image img {
+  .prop-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 800ms ease;
   }
-  .lead-card:hover .lead-image img { transform: scale(1.04); }
-  .lead-badge {
+  .prop-card:hover .prop-image img { transform: scale(1.04); }
+  .prop-badge {
     position: absolute;
-    top: 1.25rem;
-    left: 1.25rem;
-    background: var(--gold);
-    color: var(--white);
-    padding: 0.55rem 1rem;
-    font-size: 0.7rem;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
-  .lead-revenue {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1.25rem;
-    background: rgba(11,17,36,0.85);
+  .badge-available {
+    background: var(--gold);
     color: var(--white);
-    padding: 0.55rem 1rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+  }
+  .badge-sold {
+    background: rgba(13, 13, 13, 0.85);
+    color: var(--white);
     backdrop-filter: blur(8px);
   }
-  .lead-body {
-    padding: 2.5rem 2.25rem;
+  .prop-body {
+    padding: 2rem 1.85rem 2.15rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.85rem;
   }
-  .lead-meta-top {
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
+  .prop-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-muted);
     display: flex;
@@ -423,77 +264,33 @@ const distances = [
     align-items: center;
     gap: 0.4rem;
   }
-  .lead-meta-top .dot { color: var(--gold); }
-  .lead-title {
+  .prop-meta .dot { color: var(--gold); }
+  .prop-title {
     font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-size: clamp(1.35rem, 2.2vw, 1.7rem);
     color: var(--navy);
     margin: 0;
   }
-  .lead-hook { font-size: 0.98rem; line-height: 1.75; color: var(--text-muted); }
-  .lead-cta {
+  .prop-hook {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+  .prop-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    margin-top: 0.5rem;
-    padding-top: 1.25rem;
+    gap: 0.55rem;
+    margin-top: 0.35rem;
+    padding-top: 1.15rem;
     border-top: 1px solid var(--gray-warm);
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--gold);
   }
-  .lead-cta :global(svg) { transition: transform 300ms ease; }
-  .lead-card:hover .lead-cta :global(svg) { transform: translateX(6px); }
-
-  /* FOMO collapsed */
-  .fomo-section { background: var(--ivory-warm); }
-  .fomo-details {
-    max-width: 1080px;
-    margin: 0 auto;
-    background: var(--white);
-    border: 1px solid var(--gray-warm);
-  }
-  .fomo-details > summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.75rem 2rem;
-    cursor: pointer;
-    list-style: none;
-  }
-  .fomo-details > summary::-webkit-details-marker { display: none; }
-  .summary-text .eyebrow { margin-bottom: 0.5rem; }
-  .summary-text h2 {
-    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
-    margin: 0.25rem 0 0.5rem;
-  }
-  .summary-sub { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-  .summary-icon {
-    color: var(--gold);
-    flex-shrink: 0;
-    transition: transform 300ms ease;
-  }
-  .fomo-details[open] .summary-icon { transform: rotate(180deg); }
-  .fomo-body {
-    padding: 0 2rem 2rem;
-    border-top: 1px solid var(--gray-warm);
-  }
-  .fomo-body > * { margin-top: 2rem; }
-  .fomo-note {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-    font-style: italic;
-    border-left: 2px solid var(--gold);
-    padding-left: 1rem;
-  }
-  @media (max-width: 600px) {
-    .fomo-details > summary { padding: 1.25rem 1.25rem; }
-    .fomo-body { padding: 0 1.25rem 1.5rem; }
-  }
+  .prop-cta :global(svg) { transition: transform 300ms ease; }
+  .prop-card:hover .prop-cta :global(svg) { transform: translateX(6px); }
 
   /* LOCATION */
   .location-section { background: var(--white); }
@@ -525,60 +322,16 @@ const distances = [
     font-weight: 600;
   }
 
-  /* Booking banner */
-  .booking-banner { background: var(--navy); color: var(--white); padding: 3rem 0; }
-  .booking-inner {
+  /* CONTACT */
+  .contact-section { background: var(--navy); color: var(--white); }
+  .contact-inner { text-align: center; max-width: 640px; margin: 0 auto; }
+  .white-h { color: var(--white); }
+  .muted-on-dark { color: rgba(255,255,255,0.72); margin-bottom: 2rem; line-height: 1.7; }
+  .gold-on-dark { color: var(--gold-light); }
+  .contact-actions {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
   }
-  .booking-text { display: flex; align-items: center; gap: 1.5rem; }
-  .booking-rating {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--gold);
-    color: var(--navy);
-    padding: 0.8rem 1.1rem;
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .booking-text h3 { margin-bottom: 0.25rem; font-family: var(--font-serif); font-size: 1.2rem; }
-  .booking-text p { font-style: italic; max-width: 540px; }
-
-  /* CONTACT */
-  .contact-section { background: var(--navy); color: var(--white); padding-bottom: 8rem; }
-  .white-h { color: var(--white); }
-  .muted-on-dark { color: rgba(255,255,255,0.7); }
-  .gold-on-dark { color: var(--gold-light); }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
-  .contact-text p { font-size: 1.02rem; line-height: 1.8; margin-bottom: 2.5rem; }
-  .contact-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  @media (max-width: 560px) { .contact-meta { grid-template-columns: 1fr; } }
-  .contact-meta h5 {
-    font-family: var(--font-sans);
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.35rem;
-    font-weight: 600;
-  }
-  .contact-meta a { color: var(--white); font-size: 0.98rem; }
-  .contact-meta a:hover { color: var(--gold); }
-  .contact-meta span { color: rgba(255,255,255,0.85); }
 </style>

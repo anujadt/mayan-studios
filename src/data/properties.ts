@@ -1,8 +1,10 @@
+export type PropertyStatus = 'available' | 'sold';
+
 export type Property = {
   slug: string;
+  href: string;
   title: string;
-  shortTitle: string;
-  status: 'active' | 'off-market';
+  status: PropertyStatus;
   statusLabel: string;
   floor: string;
   size: string;
@@ -10,41 +12,75 @@ export type Property = {
   baths: string;
   view: string;
   hero: string;
-  thumb: string;
+  cardImage: string;
+  badge: string;
   hook: string;
 };
 
-export const properties: Property[] = [
-  {
-    slug: 'studio-corner-2f',
-    title: 'Furnished Corner Studio · Mayan 2',
-    shortTitle: 'Furnished Corner Studio',
-    status: 'active',
-    statusLabel: 'For Sale · Furnished',
-    floor: '2nd Floor · Corner Unit',
-    size: '~550 sqft',
-    beds: 'Studio',
-    baths: '1 Bath',
-    view: 'Sea & Community',
-    hero: '/images/studio-2f/01-bedroom-living.jpg',
-    thumb: '/images/studio-2f/02-living-room.jpg',
-    hook: 'A turnkey, fully furnished corner studio on the 2nd floor — 8.5★ on Booking.com, AED 148K annual revenue, sea-view balcony and access to the full Mayan amenity collection.',
-  },
-];
+export const corner: Property = {
+  slug: 'luxury-corner-studio',
+  href: '/luxury-corner-studio',
+  title: 'Luxury Corner Studio',
+  status: 'available',
+  statusLabel: 'Available',
+  floor: '2nd Floor · Corner Unit',
+  size: '~550 sqft',
+  beds: 'Studio',
+  baths: '1 Bath',
+  view: 'Sea & Community',
+  hero: '/images/studio-2f/01-bedroom-living.jpg',
+  cardImage: '/images/studio-2f/01-bedroom-living.jpg',
+  badge: 'Available',
+  hook: 'Furnished corner studio on the 2nd floor. Twin-balcony exposures, designer interiors, and access to the full Mayan amenity collection.',
+};
 
-export const studio2Gallery = [
+export const cityView: Property = {
+  slug: 'furnished-studio-city-view',
+  href: '/furnished-studio-city-view',
+  title: 'Furnished Studio with City View',
+  status: 'sold',
+  statusLabel: 'Sold',
+  floor: '5th Floor',
+  size: '~550 sqft',
+  beds: 'Studio',
+  baths: '1 Bath',
+  view: 'Community & Sunset',
+  hero: '/images/studio-5f/03-balcony-sunset.png',
+  cardImage: '/images/studio-5f/03-balcony-sunset.png',
+  badge: 'Sold',
+  hook: 'A 5th-floor studio with a private balcony framing the Yas Island skyline at sunset. Sold privately.',
+};
+
+export const properties: Property[] = [corner, cityView];
+
+export const cornerGallery = [
   { src: '/images/studio-2f/01-bedroom-living.jpg', alt: 'Furnished bedroom and living area with smart TV and artwork', category: 'Interior' },
   { src: '/images/studio-2f/02-living-room.jpg', alt: 'Living area with grey sofa, smart TV and coastal artwork', category: 'Living' },
   { src: '/images/studio-2f/03-dining.jpg', alt: 'Dining area set with chairs and table', category: 'Living' },
   { src: '/images/studio-2f/04-kitchen.jpg', alt: 'Fully-equipped kitchen with oven, washing machine, microwave and coffee maker', category: 'Kitchen' },
   { src: '/images/studio-2f/05-balcony-chairs.jpg', alt: 'Private balcony with chairs and community view', category: 'Balcony' },
+  { src: '/images/studio-2f/06-sea-view.jpg', alt: 'Sea view from balcony', category: 'Balcony' },
+  { src: '/images/studio-2f/07-balcony-bedroom.jpg', alt: 'Bedroom looking out to balcony and sea', category: 'Balcony' },
   { src: '/images/studio-2f/08-bathroom.jpg', alt: 'Designer bathroom with vessel sink and mosaic tile', category: 'Bathroom' },
+  { src: '/images/studio-2f/09-bathroom-amenities.jpg', alt: 'Bathroom with stocked amenities', category: 'Bathroom' },
   { src: '/images/amenities/infinity-pool.jpg', alt: 'Resort infinity pool with beach view', category: 'Amenities' },
   { src: '/images/amenities/beach.jpg', alt: 'Private white-sand beach with turquoise water', category: 'Amenities' },
-  { src: '/images/amenities/beach-water.jpg', alt: 'Mayan 2 beachfront with water sports', category: 'Amenities' },
+  { src: '/images/amenities/gym-new.jpg', alt: 'Fully-equipped building gym with Cybex equipment', category: 'Amenities' },
+];
+
+export const cityViewGallery = [
+  { src: '/images/studio-5f/03-balcony-sunset.png', alt: 'Private balcony at sunset framing the Yas Island skyline', category: 'Balcony' },
+  { src: '/images/studio-5f/01-living-kitchen.png', alt: 'Open-plan living and kitchen with floor-to-ceiling windows', category: 'Interior' },
+  { src: '/images/studio-5f/04-balcony-wider.png', alt: 'Wider balcony view across the Mayan community', category: 'Balcony' },
+  { src: '/images/studio-5f/05-balcony-angle.png', alt: 'Balcony at another angle showing community below', category: 'Balcony' },
+  { src: '/images/studio-5f/06-composite.png', alt: 'Composite shot of studio interior and balcony view', category: 'Interior' },
+  { src: '/images/studio-5f/02-bathroom.png', alt: 'Designer bathroom with premium fixtures', category: 'Bathroom' },
+  { src: '/images/amenities/infinity-pool.jpg', alt: 'Resort infinity pool with beach view', category: 'Amenities' },
+  { src: '/images/amenities/beach.jpg', alt: 'Private white-sand beach with turquoise water', category: 'Amenities' },
+  { src: '/images/amenities/beach-panoramic.jpg', alt: 'Panoramic beach view with sun loungers', category: 'Amenities' },
   { src: '/images/amenities/gym-new.jpg', alt: 'Fully-equipped building gym with Cybex equipment', category: 'Amenities' },
   { src: '/images/amenities/sauna.jpg', alt: 'Building sauna and steam suite', category: 'Amenities' },
-  { src: '/images/studio-2f/06-sea-view.jpg', alt: 'Sea view from balcony', category: 'Balcony' },
+  { src: '/images/amenities/beach-water.jpg', alt: 'Beach with Mayan building behind', category: 'Amenities' },
 ];
 
 export const monthlyRevenue = [
@@ -63,29 +99,14 @@ export const monthlyRevenue = [
 ];
 
 export const revenueStats = {
-  total: 132000,
-  totalLabel: 'AED 132,000',
-  annualised: 148310,
-  annualisedLabel: 'AED 148,310',
+  totalLabel: 'AED 148,310',
   reservations: 167,
   occupancy: 69,
-  guestRating: 4.51,
-  bookingRating: 8.5,
-  averageMonthly: 12359,
   averageMonthlyLabel: 'AED 12,359',
-  peakMonthly: 23000,
   peakMonthlyLabel: 'AED 23,000',
 };
 
-export const comparison = [
-  { feature: 'Status', sold: 'No longer available', available: 'Available now', highlight: true },
-  { feature: 'Layout', sold: 'Standard', available: 'Corner unit · more light', highlight: true },
-  { feature: 'Furnishing', sold: 'Unfurnished', available: 'Fully furnished', highlight: true },
-  { feature: 'Booking.com', sold: 'Not listed', available: '★ 8.5 rated', highlight: true },
-  { feature: 'Proven revenue', sold: '—', available: 'AED 148K annual', highlight: true },
-  { feature: 'Occupancy', sold: '—', available: '69% booking rate', highlight: true },
-  { feature: 'Move-in ready', sold: 'Requires fit-out', available: 'Turnkey', highlight: true },
-];
-
-export const whatsappMessage = "Hi%2C%20I'm%20interested%20in%20the%20Mayan%202%20corner%20studio%20on%20Yas%20Island.%20Is%20it%20still%20available%3F";
-export const whatsappURL = `https://wa.me/971547026170?text=${whatsappMessage}`;
+export const whatsappPhone = '971547026170';
+export const whatsappDisplay = '+971 54 702 6170';
+export const whatsappMessage = "Hi%2C%20I'm%20interested%20in%20the%20Luxury%20Corner%20Studio%20at%20Mayan%202%2C%20Yas%20Island.%20Is%20it%20still%20available%3F";
+export const whatsappURL = `https://wa.me/${whatsappPhone}?text=${whatsappMessage}`;

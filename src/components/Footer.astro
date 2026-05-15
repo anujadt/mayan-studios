@@ -1,53 +1,44 @@
 ---
+import { whatsappURL, whatsappDisplay } from '../data/properties';
 const year = new Date().getFullYear();
 ---
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">
-        <span class="footer-mark">Y</span>
+        <span class="footer-mark">M</span>
         <div>
-          <div class="footer-name">Luxury Studios on Yas Island</div>
-          <div class="footer-sub">A private listing · For sale</div>
+          <div class="footer-name">Mayan Studios</div>
+          <div class="footer-sub">Yas Island · Abu Dhabi</div>
         </div>
       </div>
       <p class="footer-tag">
-        A beautifully furnished corner studio in Aldar's waterfront community on Yas Island, Abu Dhabi — 8.5★ rated on Booking.com.
+        A private portfolio of two studio apartments at Mayan 2, Aldar's waterfront community on Yas Island.
       </p>
     </div>
 
     <div class="footer-col">
-      <h5>Explore</h5>
-      <a href="/">Home</a>
-      <a href="/studio-corner-2f">Furnished Corner Studio · 2F</a>
-      <a href="https://www.booking.com/Share-RgsjJ6" target="_blank" rel="noopener">View on Booking.com ★ 8.5</a>
+      <h5>Portfolio</h5>
+      <a href="/luxury-corner-studio">Luxury Corner Studio</a>
+      <a href="/furnished-studio-city-view">Furnished Studio with City View</a>
     </div>
 
     <div class="footer-col">
-      <h5>Inquiries</h5>
-      <a href="https://wa.me/971547026170?text=Hi%2C%20I%27m%20interested%20in%20the%20furnished%20studio%20on%20Yas%20Island." target="_blank" rel="noopener">WhatsApp +971 54 702 6170</a>
-      <a href="#contact">Schedule a private viewing</a>
+      <h5>Contact</h5>
+      <a href={whatsappURL} target="_blank" rel="noopener">WhatsApp {whatsappDisplay}</a>
+      <a href="/contact">Schedule a viewing</a>
     </div>
 
     <div class="footer-col">
       <h5>Location</h5>
       <p class="addr">Mayan 2, Yas Island<br/>Abu Dhabi, United Arab Emirates</p>
-      <a href="/mayan-2f-brief.html" class="footer-pdf" target="_blank" rel="noopener">Download Property Brief →</a>
-    </div>
-  </div>
-
-  <div class="footer-disclaimer">
-    <div class="container">
-      <p>
-        This is a private listing. For official property transactions, please work with a RERA/ADREC licensed broker. Information shown — including revenue figures, occupancy and guest ratings — is provided in good faith and available for verification during due diligence. Not affiliated with Aldar Properties or Booking.com.
-      </p>
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="container">
-      <span>© {year} Luxury Studios on Yas Island. All rights reserved.</span>
-      <span class="muted">Private listing · Independently offered</span>
+      <span>© {year} Mayan Studios</span>
+      <span class="muted">Private portfolio · Yas Island, Abu Dhabi</span>
     </div>
   </div>
 </footer>
@@ -131,29 +122,6 @@ const year = new Date().getFullYear();
     font-size: 0.92rem;
     line-height: 1.7;
     color: rgba(255,255,255,0.7);
-  }
-  .footer-pdf {
-    display: inline-block;
-    margin-top: 1rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 3px;
-  }
-  .footer-pdf:hover { color: var(--gold-light); }
-  .footer-disclaimer {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding: 1.5rem 0;
-    background: rgba(0,0,0,0.18);
-  }
-  .footer-disclaimer p {
-    font-size: 0.76rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.55);
-    max-width: 920px;
   }
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.08);

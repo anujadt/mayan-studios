@@ -1,0 +1,453 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Gallery from '../components/Gallery.astro';
+import { cityViewGallery, cityView, corner } from '../data/properties';
+
+const interior = [
+  { icon: 'view', text: 'Private Balcony with Sunset Community Views' },
+  { icon: 'light', text: 'Floor-to-Ceiling Windows · Generous Natural Light' },
+  { icon: 'sofa', text: 'Open-Plan Living Area' },
+  { icon: 'check', text: 'Fitted Kitchen' },
+  { icon: 'bath', text: 'Designer Bathroom with Premium Fixtures' },
+  { icon: 'ac', text: 'Centralised Air Conditioning' },
+  { icon: 'check', text: 'Built-in Wardrobe' },
+];
+
+const building = [
+  { icon: 'concierge', text: '24/7 Concierge & Security' },
+  { icon: 'gym', text: 'Fully-Equipped Gym (Cybex)' },
+  { icon: 'pool', text: 'Infinity Pool & Children\'s Pools' },
+  { icon: 'garden', text: 'Indoor & Outdoor Children\'s Playgrounds' },
+  { icon: 'bbq', text: 'Barbecue Areas & Sun Decks' },
+  { icon: 'beach', text: 'Direct Private Beach Access' },
+  { icon: 'parking', text: 'Underground Covered Parking' },
+  { icon: 'sauna', text: 'Sauna & Steam Rooms' },
+];
+
+const amenityPhotos = [
+  { src: '/images/amenities/infinity-pool.jpg', alt: 'Infinity pool with beach view', caption: 'Infinity Pool' },
+  { src: '/images/amenities/beach.jpg', alt: 'Private beach with turquoise water', caption: 'Private Beach' },
+  { src: '/images/amenities/gym-new.jpg', alt: 'Fully-equipped Cybex gym', caption: 'Gym' },
+  { src: '/images/amenities/sauna.jpg', alt: 'Sauna and steam suite', caption: 'Sauna' },
+];
+
+const nearby = [
+  { place: 'Private Beach & Yas Links Golf', time: '1 min' },
+  { place: 'Yas Bay Restaurants', time: '3 min' },
+  { place: 'Yas Marina Circuit (F1)', time: '7 min' },
+  { place: 'Ferrari World & Yas Waterworld', time: '7 min' },
+  { place: 'Yas Mall (Shopping & Cinemas)', time: '9 min' },
+  { place: 'Zayed International Airport', time: '10 min' },
+  { place: 'Downtown Abu Dhabi', time: '25 min' },
+  { place: 'Dubai', time: '50 min' },
+];
+---
+<Layout
+  title="Furnished Studio with City View · Mayan 2 · Yas Island"
+  description="A 5th-floor studio at Mayan 2, Yas Island, with a private balcony framing the community at sunset. Sold privately."
+  ogImage={cityView.hero}
+  topBanner="Sold · Privately transacted"
+>
+  <!-- HERO -->
+  <section class="listing-hero">
+    <div class="hero-image" style={`background-image: url('${cityView.hero}')`}></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="status-pill">Sold</span>
+      <h1>Furnished Studio<br/>with City View</h1>
+      <div class="hero-sub">Mayan 2 · 5th Floor · Yas Island</div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="specs">
+    <div class="container specs-inner">
+      <div class="spec"><Icon name="bed" size={20} /><div><span class="spec-num">Studio</span><span class="spec-label">Layout</span></div></div>
+      <div class="spec"><Icon name="bath" size={20} /><div><span class="spec-num">1 Bath</span><span class="spec-label">Designer Fixtures</span></div></div>
+      <div class="spec"><Icon name="area" size={20} /><div><span class="spec-num">~550 sqft</span><span class="spec-label">Floor Area</span></div></div>
+      <div class="spec"><Icon name="floor" size={20} /><div><span class="spec-num">5th Floor</span><span class="spec-label">Community View</span></div></div>
+      <div class="spec"><Icon name="check" size={20} /><div><span class="spec-num">Sold</span><span class="spec-label">Off Market</span></div></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="container-narrow gallery-wrap">
+    <Gallery images={cityViewGallery} />
+  </section>
+
+  <!-- DESCRIPTION -->
+  <section class="section description-section">
+    <div class="container-narrow">
+      <div class="fade-in">
+        <span class="eyebrow">The Residence</span>
+        <h2>Sunset Skyline, Fifth Floor.</h2>
+        <div class="gold-divider"></div>
+        <div class="prose">
+          <p class="lead">
+            A 5th-floor studio at Mayan 2 with a private balcony framing the Yas Island skyline at sunset.
+          </p>
+          <p>
+            The elevated position offers open community and skyline views, with the warm evening light that floods the unit through floor-to-ceiling glass. An open-plan layout with a fitted kitchen and a designer bathroom — a refined urban studio in a resort setting.
+          </p>
+          <p>
+            Within easy reach of Yas Marina Circuit, Ferrari World, Yas Waterworld, and Yas Mall — and minutes from Zayed International Airport.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="features-col fade-in">
+          <span class="eyebrow">Interior</span>
+          <h3>Studio Features</h3>
+          <div class="gold-divider"></div>
+          <ul class="feature-list">
+            {interior.map((f) => (
+              <li>
+                <span class="feature-icon"><Icon name={f.icon} size={18} /></span>
+                <span>{f.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="features-col fade-in">
+          <span class="eyebrow">Building</span>
+          <h3>Facilities &amp; Amenities</h3>
+          <div class="gold-divider"></div>
+          <ul class="feature-list">
+            {building.map((f) => (
+              <li>
+                <span class="feature-icon"><Icon name={f.icon} size={18} /></span>
+                <span>{f.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES PHOTOS -->
+  <section class="section amenities-photos-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Amenities</span>
+        <h2>The Mayan Collection.</h2>
+        <div class="gold-divider center"></div>
+      </div>
+      <div class="amenity-grid fade-in">
+        {amenityPhotos.map((p) => (
+          <figure>
+            <img src={p.src} alt={p.alt} loading="lazy" />
+            <figcaption>{p.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section location-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="eyebrow">Location</span>
+        <h2>Yas Island — at the centre of it all.</h2>
+        <div class="gold-divider center"></div>
+      </div>
+
+      <div class="location-grid">
+        <div class="location-map fade-in">
+          <iframe
+            src="https://www.google.com/maps?q=Mayan+2+Yas+Island+Abu+Dhabi&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of Mayan 2, Yas Island"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="nearby-list fade-in">
+          <h3>Nearby</h3>
+          <div class="gold-divider"></div>
+          {nearby.map((n) => (
+            <div class="nearby-row">
+              <span class="nearby-place">{n.place}</span>
+              <span class="nearby-dots"></span>
+              <span class="nearby-time">{n.time}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABLE UNIT REFERENCE -->
+  <section class="section available-ref-section">
+    <div class="container">
+      <div class="available-ref fade-in">
+        <div class="available-text">
+          <span class="eyebrow">Interested in a similar studio?</span>
+          <h2>Our {corner.title.toLowerCase()} is still available.</h2>
+          <p>A furnished corner unit on the 2nd floor at Mayan 2 — refined, low-maintenance, and steps from the Arabian Gulf.</p>
+          <a href={corner.href} class="available-link">
+            <span>View the {corner.title}</span>
+            <Icon name="arrow" size={16} />
+          </a>
+        </div>
+        <a href={corner.href} class="available-image">
+          <img src={corner.cardImage} alt={`${corner.title} preview`} loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .listing-hero {
+    position: relative;
+    height: 78vh;
+    min-height: 520px;
+    display: flex;
+    align-items: flex-end;
+    color: var(--white);
+    overflow: hidden;
+  }
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(17,25,59,0.30) 0%, rgba(17,25,59,0.12) 35%, rgba(17,25,59,0.82) 100%);
+  }
+  .listing-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 4rem;
+    padding-top: 8rem;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(13,13,13,0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .listing-hero h1 {
+    color: var(--white);
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .hero-sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* Specs */
+  .specs {
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-warm);
+    padding: 2rem 0;
+  }
+  .specs-inner {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+  .spec {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--gold);
+  }
+  .spec > div { display: flex; flex-direction: column; line-height: 1.2; }
+  .spec-num {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .spec-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  @media (max-width: 900px) {
+    .specs-inner { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    .specs-inner { grid-template-columns: 1fr; }
+  }
+
+  .gallery-wrap { padding-top: 3rem; padding-bottom: 1rem; }
+
+  /* Description */
+  .description-section { background: var(--white); }
+  .prose .lead {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--navy);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+  .prose p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 1.25rem; }
+
+  /* Features */
+  .features-section { background: var(--ivory); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 3rem; } }
+  .features-col h3 { margin-bottom: 0.5rem; }
+  .feature-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-warm);
+    font-size: 0.95rem;
+    color: var(--navy);
+  }
+  .feature-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Amenities photos */
+  .amenities-photos-section { background: var(--white); }
+  .amenities-photos-section .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .amenity-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 900px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .amenity-grid { grid-template-columns: 1fr; } }
+  .amenity-grid figure { position: relative; margin: 0; overflow: hidden; }
+  .amenity-grid img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: transform 600ms ease;
+  }
+  .amenity-grid figure:hover img { transform: scale(1.04); }
+  .amenity-grid figcaption {
+    position: absolute;
+    bottom: 0.85rem;
+    left: 0.85rem;
+    background: rgba(255,255,255,0.95);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* Location */
+  .location-section { background: var(--ivory-warm); }
+  .location-section .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+  }
+  @media (max-width: 900px) { .location-grid { grid-template-columns: 1fr; } }
+  .location-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    border: 0;
+    background: var(--ivory-warm);
+  }
+  .nearby-list {
+    background: var(--white);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .nearby-list h3 { margin-bottom: 0.25rem; }
+  .nearby-list .gold-divider { margin-bottom: 1rem; }
+  .nearby-row { display: flex; align-items: baseline; gap: 0.75rem; font-size: 0.95rem; }
+  .nearby-place { color: var(--navy); font-weight: 500; }
+  .nearby-dots { flex: 1; border-bottom: 1px dotted var(--gray-warm); transform: translateY(-4px); }
+  .nearby-time { color: var(--gold); font-weight: 600; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+
+  /* Available reference */
+  .available-ref-section { background: var(--white); }
+  .available-ref {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    background: var(--ivory);
+    overflow: hidden;
+  }
+  @media (max-width: 800px) { .available-ref { grid-template-columns: 1fr; } }
+  .available-text { padding: 2.5rem 2.5rem 2.5rem 2.5rem; }
+  .available-text h2 { font-size: clamp(1.5rem, 2.6vw, 1.85rem); margin: 0.5rem 0 1rem; }
+  .available-text p { font-size: 0.98rem; line-height: 1.75; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .available-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--gold);
+  }
+  .available-link :global(svg) { transition: transform 300ms ease; }
+  .available-link:hover :global(svg) { transform: translateX(6px); }
+  .available-image { display: block; overflow: hidden; }
+  .available-image img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform 600ms ease;
+  }
+  .available-image:hover img { transform: scale(1.04); }
+</style>

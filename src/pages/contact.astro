@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import InquiryForm from '../components/InquiryForm.astro';
+import { whatsappURL, whatsappDisplay } from '../data/properties';
+---
+<Layout
+  title="Contact · Mayan Studios · Yas Island"
+  description="Schedule a private viewing of the Mayan 2 studio apartments on Yas Island. WhatsApp the owner, or send a message."
+  navSolid={true}
+>
+  <section class="section contact-page">
+    <div class="container-narrow">
+      <div class="contact-head fade-in">
+        <span class="eyebrow">Inquiries</span>
+        <h1>Schedule a Viewing</h1>
+        <div class="gold-divider"></div>
+        <p>
+          Reach out to the owner directly. Share a few details below and you'll get a personal reply — or message on WhatsApp for the fastest response.
+        </p>
+        <a class="wa-pill" href={whatsappURL} target="_blank" rel="noopener">
+          <Icon name="whatsapp" size={18} /> WhatsApp {whatsappDisplay}
+        </a>
+      </div>
+
+      <div class="form-wrap fade-in">
+        <InquiryForm property="Mayan Studios · General Inquiry" variant="light" />
+      </div>
+
+      <div class="contact-meta fade-in">
+        <div>
+          <h5>Location</h5>
+          <p>Mayan 2 · Yas Island<br/>Abu Dhabi, United Arab Emirates</p>
+        </div>
+        <div>
+          <h5>Phone &amp; WhatsApp</h5>
+          <p><a href={whatsappURL} target="_blank" rel="noopener">{whatsappDisplay}</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-page {
+    background: var(--ivory);
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+  .contact-head { margin-bottom: 3rem; }
+  .contact-head h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    margin: 0.5rem 0 0;
+  }
+  .contact-head p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .wa-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--green);
+    color: var(--white);
+    padding: 0.85rem 1.25rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+  .wa-pill:hover {
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(11,17,36,0.15);
+  }
+
+  .form-wrap {
+    background: var(--white);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 3rem;
+  }
+  @media (max-width: 640px) { .form-wrap { padding: 1.75rem 1.25rem; } }
+
+  .contact-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray-warm);
+  }
+  @media (max-width: 560px) { .contact-meta { grid-template-columns: 1fr; gap: 1.5rem; } }
+  .contact-meta h5 {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .contact-meta p { font-size: 0.98rem; line-height: 1.7; color: var(--navy); }
+  .contact-meta a { color: var(--navy); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+  .contact-meta a:hover { color: var(--gold); }
+</style>

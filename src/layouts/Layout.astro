@@ -8,16 +8,21 @@ export interface Props {
   description?: string;
   ogImage?: string;
   canonical?: string;
+  topBanner?: string;
+  navSolid?: boolean;
 }
 
 const {
   title,
-  description = 'A turnkey investment on Yas Island — AED 148K annual revenue, fully furnished, 8.5★ on Booking.com. A privately offered corner studio at Mayan 2, Abu Dhabi.',
+  description = 'A private portfolio of two luxury studio apartments at Mayan 2, Yas Island, Abu Dhabi.',
   ogImage = '/images/amenities/infinity-pool.jpg',
-  canonical
+  canonical,
+  topBanner,
+  navSolid = false,
 } = Astro.props as Props;
 
 const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toString();
+const bodyClass = [topBanner ? 'has-top-banner' : '', navSolid ? 'has-solid-nav' : ''].filter(Boolean).join(' ');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -29,37 +34,77 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Luxury Studios on Yas Island" />
+    <meta property="og:site_name" content="Mayan Studios · Yas Island" />
     <meta property="og:locale" content="en_AE" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
-    <meta property="og:image:alt" content="Mayan 2 infinity pool overlooking the Arabian Gulf, Yas Island, Abu Dhabi" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content={canonicalURL} />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" />
 
     <meta name="theme-color" content="#1B2A4A" />
   </head>
-  <body>
+  <body class={bodyClass}>
+    {topBanner && (
+      <div class="top-banner">
+        <div class="container top-banner-inner">
+          <span class="top-banner-dot" aria-hidden="true"></span>
+          <span class="top-banner-text">{topBanner}</span>
+        </div>
+      </div>
+    )}
     <Navbar />
     <main>
       <slot />
     </main>
     <Footer />
+
+    <style is:global>
+      .top-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 110;
+        background: #1A1A1A;
+        color: rgba(255,255,255,0.92);
+        padding: 0.55rem 0;
+      }
+      .top-banner-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+      .top-banner-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: #D8B864;
+        border-radius: 50%;
+      }
+      body.has-top-banner .nav { top: 36px; }
+      body.has-solid-nav .nav { background: rgba(248, 245, 240, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(27,42,74,0.06); }
+      body.has-solid-nav .nav .brand { color: var(--navy); }
+      body.has-solid-nav .nav .nav-menu a { color: var(--navy); }
+      body.has-solid-nav .nav .nav-cta { border-color: var(--gold); color: var(--gold) !important; }
+      body.has-solid-nav .nav .nav-burger span { background: var(--navy); }
+    </style>
 
     <script>
       const io = new IntersectionObserver((entries) => {
@@ -73,7 +118,6 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
 
       document.querySelectorAll('.fade-in').forEach((el) => io.observe(el));
 
-      // Navbar scroll state
       const nav = document.querySelector('.nav');
       if (nav) {
         const onScroll = () => {
@@ -84,7 +128,6 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).toStri
         onScroll();
       }
 
-      // Mobile menu toggle
       const burger = document.querySelector('.nav-burger');
       const menu = document.querySelector('.nav-menu');
       if (burger && menu) {
